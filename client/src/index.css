@@ -295,3 +295,16 @@ button:focus-visible { outline: 3px solid rgba(232,123,75,.42); outline-offset: 
 .course-card-title h3 { margin: 0 0 9px; font-size: 14px; line-height: 1.4; letter-spacing: -.025em; }
 .current-badge { flex: 0 0 auto; margin-bottom: 9px; border-radius: 999px; padding: 3px 7px; background: var(--orange-dark); color: #fffaf1; font-family: 'DM Mono', monospace; font-size: 8px; }
 @media (max-width: 620px) { .course-navigation { margin-top: 29px; padding-top: 21px; } .course-nav-arrows { grid-template-columns: 1fr 1fr; gap: 8px; } .course-index-button { grid-column: 1 / -1; grid-row: 1; min-height: 48px; flex-direction: row; gap: 8px; } .course-nav-button { min-height: 59px; padding: 10px; } .course-nav-button.next { grid-column: 2; } .course-nav-button.previous { grid-column: 1; } .course-nav-button strong { max-width: 112px; font-size: 11px; } .course-directory-heading { display: block; margin-top: 28px; } .course-directory-heading p { margin-top: 8px; } .course-directory-grid { grid-template-columns: 1fr; gap: 8px; } .course-directory-card { min-height: 75px; padding: 12px; } .course-card-title h3 { font-size: 13px; } .current-badge { font-size: 7px; } }
+
+/* User-requested global typography and home priority */
+.site-shell, .site-shell * { font-family: 'Noto Sans TC', Arial, sans-serif !important; font-variant-numeric: normal; }
+.home-shell { display: flex; flex-direction: column; }
+.home-shell .topbar { order: 0; }
+.home-shell .workspace { order: 1; }
+.home-shell .intro-wrap { order: 2; }
+.home-shell .home-direct-links { order: 3; }
+.home-shell .footer-note { order: 4; }
+.home-shell .workspace { padding-top: 28px; }
+.home-shell .intro-wrap { padding-top: 46px; }
+
+.home-shell > .topbar, .home-shell > .workspace, .home-shell > .intro-wrap, .home-shell > .home-direct-links, .home-shell > .footer-note { width: 100%; }

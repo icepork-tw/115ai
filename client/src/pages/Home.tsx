@@ -119,7 +119,7 @@ export default function Home() {
   };
 
   return (
-    <main className="site-shell">
+    <main className="site-shell home-shell">
       <div className="paper-glow" aria-hidden="true" />
       <header className="topbar">
         <div className="brand-lockup">
