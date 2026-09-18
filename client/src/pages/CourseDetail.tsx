@@ -1,5 +1,5 @@
 import { Link, useLocation, useRoute } from "wouter";
-import { ArrowLeft, BookOpen, CalendarDays, Clock3, GraduationCap, UsersRound } from "lucide-react";
+import { ArrowLeft, ArrowRight, BookOpen, CalendarDays, ChevronRight, Clock3, GraduationCap, UsersRound } from "lucide-react";
 import { courseNames, schedule, type ScheduleDay, type Session } from "@/data/schedule";
 
 function expandSession(session: Session) {
@@ -35,6 +35,16 @@ export default function CourseDetail() {
   const totalHours = rows.reduce((sum, row) => sum + Number.parseInt(row.hours || "0", 10), 0);
   const teachers = Array.from(new Set(rows.map((row) => row.teacher).filter(Boolean)));
   const assistants = Array.from(new Set(rows.map((row) => row.assistant).filter(Boolean)));
+  const currentIndex = Math.max(0, courseNames.indexOf(course));
+  const previousCourse = courseNames[currentIndex - 1];
+  const nextCourse = courseNames[currentIndex + 1];
+  const courseSummary = (name: string) => {
+    const sessions = schedule.flatMap((day) => [
+      ...expandSession(day.am).filter((item) => item.course === name),
+      ...expandSession(day.pm).filter((item) => item.course === name),
+    ]);
+    return { sessions: sessions.length, hours: sessions.reduce((sum, item) => sum + Number.parseInt(item.hours || "0", 10), 0) };
+  };
 
   return (
     <main className="site-shell detail-shell">
@@ -84,7 +94,15 @@ export default function CourseDetail() {
         </aside>
       </section>
 
-      <section className="other-courses"><span className="section-overline">EXPLORE MORE</span><h2>其他課程</h2><div className="course-chips">{courseNames.filter((name) => name !== course).map((name, index) => <Link key={name} href={`/course/${encodeURIComponent(name)}`} className="course-chip"><span className="chip-number">{String(index + 1).padStart(2, "0")}</span>{name}</Link>)}</div></section>
+      <section className="course-navigation">
+        <div className="course-nav-arrows">
+          {previousCourse ? <Link href={`/course/${encodeURIComponent(previousCourse)}`} className="course-nav-button previous"><ArrowLeft size={17} /><span><small>上一門課程</small><strong>{previousCourse}</strong></span></Link> : <span />}
+          <Link href="/courses" className="course-index-button"><BookOpen size={16} /><span>課程索引</span><small>{currentIndex + 1} / {courseNames.length}</small></Link>
+          {nextCourse ? <Link href={`/course/${encodeURIComponent(nextCourse)}`} className="course-nav-button next"><span><small>下一門課程</small><strong>{nextCourse}</strong></span><ArrowRight size={17} /></Link> : <span />}
+        </div>
+        <div className="course-directory-heading"><div><span className="section-overline">EXPLORE COURSES</span><h2>課程導覽</h2></div><p>選擇其他課程，直接查看完整上課資訊。</p></div>
+        <div className="course-directory-grid">{courseNames.map((name, index) => { const summary = courseSummary(name); const isCurrent = name === course; return <Link key={name} href={`/course/${encodeURIComponent(name)}`} className={`course-directory-card ${isCurrent ? "current" : ""}`}><div className="directory-number">{String(index + 1).padStart(2, "0")}</div><div className="course-directory-copy"><div className="course-card-title"><h3>{name}</h3>{isCurrent && <span className="current-badge">目前瀏覽中</span>}</div><div className="directory-meta"><span><CalendarDays size={13} /> {summary.sessions} 次上課</span><span><span className="meta-dot" /> {summary.hours} 節</span></div></div><ChevronRight size={17} className="directory-arrow" /></Link>; })}</div>
+      </section>
       <footer className="footer-note"><span>115 · LEARNING ROUTE</span><span>資料依 PDF 課表整理 · 僅顯示講師與助教資訊</span><span>一門課，一條學習路線</span></footer>
     </main>
   );
