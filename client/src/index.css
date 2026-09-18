@@ -240,3 +240,17 @@ button:focus-visible { outline: 3px solid rgba(232,123,75,.42); outline-offset: 
 .directory-shell .footer-note { margin-top: 38px; }
 @media (max-width: 900px) { .topbar-nav { gap: 10px; } .topbar-note { display: none; } }
 @media (max-width: 620px) { .topbar-nav { gap: 9px; } .topbar-link { font-size: 0; } .topbar-link svg { width: 17px; height: 17px; } .directory-hero { padding: 31px 0 28px; } .directory-grid { grid-template-columns: 1fr; gap: 9px; } .directory-card { min-height: 91px; padding: 15px; } .directory-card-body h2 { font-size: 14px; } }
+
+.home-direct-links { max-width: 1340px; margin: -4px auto 0; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px; position: relative; }
+.home-direct-card { min-height: 148px; display: flex; align-items: center; gap: 18px; padding: 24px 27px; color: var(--ink); text-decoration: none; border: 1px solid var(--line); background: var(--cream); box-shadow: 8px 9px 0 rgba(22,54,50,.045); transition: transform .18s ease, box-shadow .18s ease, border-color .18s ease; }
+.home-direct-card:hover { transform: translateY(-4px); box-shadow: 8px 13px 0 rgba(22,54,50,.08); border-color: var(--orange); }
+.home-direct-card.course-entry { background: #f8eee6; }
+.home-direct-card.lecturer-entry { background: #eaf2f0; }
+.direct-card-icon { width: 52px; height: 52px; flex: 0 0 auto; display: grid; place-items: center; border-radius: 50%; color: var(--orange-dark); border: 1px solid rgba(232,123,75,.5); background: rgba(251,250,246,.55); }
+.lecturer-entry .direct-card-icon { color: #4e8488; border-color: rgba(109,159,162,.6); }
+.direct-card-copy { flex: 1; min-width: 0; }
+.direct-card-copy h2 { margin: 4px 0 7px; font-size: 25px; letter-spacing: -.055em; }
+.direct-card-copy p { margin: 0; color: var(--ink-soft); font-size: 11px; line-height: 1.7; }
+.direct-card-arrow { flex: 0 0 auto; color: var(--ink-soft); transition: transform .18s ease, color .18s ease; }
+.home-direct-card:hover .direct-card-arrow { color: var(--orange-dark); transform: translateX(5px); }
+@media (max-width: 620px) { .home-direct-links { grid-template-columns: 1fr; gap: 9px; margin-top: -8px; } .home-direct-card { min-height: 112px; padding: 17px; gap: 13px; } .direct-card-icon { width: 43px; height: 43px; } .direct-card-icon svg { width: 21px; height: 21px; } .direct-card-copy h2 { font-size: 20px; } .direct-card-copy p { font-size: 10px; } }

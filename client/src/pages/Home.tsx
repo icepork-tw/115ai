@@ -147,6 +147,19 @@ export default function Home() {
         </div>
       </section>
 
+      <section className="home-direct-links" aria-label="專頁入口">
+        <Link href="/courses" className="home-direct-card course-entry">
+          <div className="direct-card-icon"><BookOpen size={26} /></div>
+          <div className="direct-card-copy"><span className="section-overline">BROWSE BY COURSE</span><h2>課程專頁</h2><p>查看每門課的上課日期、時間、講師、助教與統計資訊。</p></div>
+          <ArrowRight className="direct-card-arrow" size={25} />
+        </Link>
+        <Link href="/lecturers" className="home-direct-card lecturer-entry">
+          <div className="direct-card-icon"><UserRound size={26} /></div>
+          <div className="direct-card-copy"><span className="section-overline">BROWSE BY TEACHER</span><h2>講師專頁</h2><p>查看每位講師的授課日期、課程與時間清單。</p></div>
+          <ArrowRight className="direct-card-arrow" size={25} />
+        </Link>
+      </section>
+
       <section className="workspace">
         <div className="calendar-panel panel-card">
           <div className="panel-topline">
