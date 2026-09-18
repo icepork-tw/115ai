@@ -102,6 +102,8 @@ export default function Home() {
   const selectedDay = byDate.get(selectedDate);
   const calendar = useMemo(() => buildCalendar(viewMonth), [viewMonth]);
   const activeIndex = schedule.findIndex((day) => day.date === selectedDate);
+  const todayKey = keyForDate(new Date());
+  const todaySchedule = byDate.get(todayKey);
 
   const chooseDate = (date: string) => {
     setSelectedDate(date);
@@ -112,6 +114,11 @@ export default function Home() {
   const moveDate = (direction: -1 | 1) => {
     const nextIndex = activeIndex + direction;
     if (nextIndex >= 0 && nextIndex < schedule.length) chooseDate(schedule[nextIndex].date);
+  };
+
+  const chooseToday = () => {
+    const target = todaySchedule?.date ?? schedule.find((day) => day.date >= todayKey)?.date ?? FIRST_DATE;
+    chooseDate(target);
   };
 
   const changeMonth = (direction: -1 | 1) => {
@@ -125,7 +132,7 @@ export default function Home() {
         <div className="brand-lockup">
           <div className="brand-mark"><BookOpen size={19} strokeWidth={2.2} /></div>
           <div>
-            <p className="brand-kicker">LEARNER EDITION · 01</p>
+            <p className="brand-kicker">學員版 · 第 01 期</p>
             <p className="brand-name">電腦應用與 AI 工具班</p>
           </div>
         </div>
@@ -143,7 +150,7 @@ export default function Home() {
           <p className="intro-text">不用查詢，直接點選日期或課程。<br />把這份課表當成每天的學習路線圖。</p>
         </div>
         <div className="intro-stamp">
-          <span>PDF VERIFIED</span>
+          <span>已依 PDF 核對</span>
           <strong>學員版</strong>
           <small>講師資訊已整理</small>
         </div>
@@ -152,12 +159,12 @@ export default function Home() {
       <section className="home-direct-links" aria-label="專頁入口">
         <Link href="/courses" className="home-direct-card course-entry">
           <div className="direct-card-icon"><BookOpen size={26} /></div>
-          <div className="direct-card-copy"><span className="section-overline">BROWSE BY COURSE</span><h2>課程專頁</h2><p>查看每門課的上課日期、時間、講師、助教與統計資訊。</p></div>
+          <div className="direct-card-copy"><span className="section-overline">依課程瀏覽</span><h2>課程專頁</h2><p>查看每門課的上課日期、時間、講師、助教與統計資訊。</p></div>
           <ArrowRight className="direct-card-arrow" size={25} />
         </Link>
         <Link href="/lecturers" className="home-direct-card lecturer-entry">
           <div className="direct-card-icon"><UserRound size={26} /></div>
-          <div className="direct-card-copy"><span className="section-overline">BROWSE BY TEACHER</span><h2>講師專頁</h2><p>查看每位講師的授課日期、課程與時間清單。</p></div>
+          <div className="direct-card-copy"><span className="section-overline">依講師瀏覽</span><h2>講師專頁</h2><p>查看每位講師的授課日期、課程與時間清單。</p></div>
           <ArrowRight className="direct-card-arrow" size={25} />
         </Link>
       </section>
@@ -165,11 +172,12 @@ export default function Home() {
       <section className="workspace">
         <div className="calendar-panel panel-card">
           <div className="panel-topline">
-            <div><span className="section-overline">SELECT A DATE</span><h2>月曆</h2></div>
+            <div><span className="section-overline">選擇日期</span><h2>月曆</h2></div>
             <div className="month-controls">
               <button className="icon-button" onClick={() => changeMonth(-1)} aria-label="上個月"><ChevronLeft size={18} /></button>
               <span>{viewMonth.getFullYear()} 年 {viewMonth.getMonth() + 1} 月</span>
               <button className="icon-button" onClick={() => changeMonth(1)} aria-label="下個月"><ChevronRight size={18} /></button>
+              <button className="today-button" onClick={chooseToday}>回到今天</button>
             </div>
           </div>
           <div className="calendar-weekdays">{WEEKDAYS.map((day) => <span key={day}>{day}</span>)}</div>
@@ -177,11 +185,13 @@ export default function Home() {
             {calendar.map((cell) => {
               const day = byDate.get(cell.key);
               const selected = selectedDate === cell.key;
+              const isToday = todayKey === cell.key;
               return (
-                <button key={cell.key} className={`calendar-day ${!cell.inMonth ? "muted" : ""} ${day ? "has-class highlighted" : ""} ${selected ? "selected" : ""}`} disabled={!day} onClick={() => day && chooseDate(cell.key)}>
+                <button key={cell.key} className={`calendar-day ${!cell.inMonth ? "muted" : ""} ${day ? "has-class highlighted" : ""} ${isToday ? "today" : ""} ${selected ? "selected" : ""}`} disabled={!day} onClick={() => day && chooseDate(cell.key)}>
                   <span className="day-number">{cell.date.getDate()}</span>
                   {day && <span className="day-dots"><i /><i /></span>}
                   {day && <span className="day-caption">課</span>}
+                  {isToday && <span className="today-label">今天</span>}
                 </button>
               );
             })}
@@ -191,7 +201,7 @@ export default function Home() {
 
         <aside className="day-panel panel-card">
           <div className="day-panel-header">
-            <div><span className="section-overline">YOUR DAY</span><h2>{selectedDay ? displayDate(selectedDay.date) : "選擇上課日"}</h2>{selectedDay && <p className="weekday-line">星期{selectedDay.weekday} · 今日課程</p>}</div>
+            <div><span className="section-overline">當日課程</span><h2>{selectedDay ? displayDate(selectedDay.date) : "選擇上課日"}</h2>{selectedDay && <p className="weekday-line">星期{selectedDay.weekday} · 今日課程</p>}</div>
             {selectedDay && <div className="date-index">{String(activeIndex + 1).padStart(2, "0")}<small>/ {schedule.length}</small></div>}
           </div>
           {selectedDay ? <DaySchedule day={selectedDay} /> : <div className="empty-day"><CalendarDays size={28} /><p>點選月曆中的上課日</p></div>}
@@ -202,7 +212,7 @@ export default function Home() {
         </aside>
       </section>
 
-      <footer className="footer-note"><span>115 · LEARNING ROUTE</span><span>資料依 PDF 課表整理 · 僅顯示講師資訊</span><span>點日期，開始今天的課</span></footer>
+      <footer className="footer-note"><span>115 · 學習路線</span><span>資料依 PDF 課表整理 · 僅顯示講師資訊</span><span>點日期，開始今天的課</span></footer>
     </main>
   );
 }

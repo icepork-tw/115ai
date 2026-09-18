@@ -52,14 +52,14 @@ export default function CourseDetail() {
       <header className="topbar">
         <Link href="/" className="brand-lockup detail-brand">
           <div className="brand-mark"><BookOpen size={19} strokeWidth={2.2} /></div>
-          <div><p className="brand-kicker">LEARNER EDITION · 01</p><p className="brand-name">電腦應用與 AI 工具班</p></div>
+          <div><p className="brand-kicker">學員版 · 第 01 期</p><p className="brand-name">電腦應用與 AI 工具班</p></div>
         </Link>
-        <span className="topbar-note">COURSE DETAIL · 課程專頁</span>
+        <span className="topbar-note">課程專頁</span>
       </header>
 
       <section className="detail-hero">
         <button className="back-link" onClick={() => setLocation("/")}><ArrowLeft size={16} /> 回到月曆</button>
-        <p className="eyebrow"><span /> COURSE PROFILE</p>
+        <p className="eyebrow"><span /> 課程資料</p>
         <h1>{course}</h1>
         <p className="detail-lede">這門課的完整上課清單。按日期排列，講師與助教資訊一目了然。</p>
       </section>
@@ -73,7 +73,7 @@ export default function CourseDetail() {
 
       <section className="detail-layout">
         <div className="course-list panel-card">
-          <div className="list-heading"><div><span className="section-overline">CLASS SCHEDULE</span><h2>上課日期與時間</h2></div><span className="course-count">共 {rows.length} 筆</span></div>
+          <div className="list-heading"><div><span className="section-overline">上課安排</span><h2>上課日期與時間</h2></div><span className="course-count">共 {rows.length} 筆</span></div>
           <div className="schedule-list">
             {rows.map((row, index) => (
               <div className="course-row" key={`${row.date}-${row.period}-${index}`}>
@@ -86,7 +86,7 @@ export default function CourseDetail() {
           </div>
         </div>
         <aside className="people-card panel-card">
-          <span className="section-overline">PEOPLE</span>
+          <span className="section-overline">授課團隊</span>
           <h2>授課團隊</h2>
           <div className="people-block"><span className="people-label">講師</span>{teachers.map((person) => <div className="person-name" key={person}><GraduationCap size={16} />{person}</div>)}</div>
           <div className="people-block"><span className="people-label">助教</span>{assistants.map((person) => <div className="person-name" key={person}><UsersRound size={16} />{person}</div>)}</div>
@@ -100,10 +100,10 @@ export default function CourseDetail() {
           <Link href="/courses" className="course-index-button"><BookOpen size={16} /><span>課程索引</span><small>{currentIndex + 1} / {courseNames.length}</small></Link>
           {nextCourse ? <Link href={`/course/${encodeURIComponent(nextCourse)}`} className="course-nav-button next"><span><small>下一門課程</small><strong>{nextCourse}</strong></span><ArrowRight size={17} /></Link> : <span />}
         </div>
-        <div className="course-directory-heading"><div><span className="section-overline">EXPLORE COURSES</span><h2>課程導覽</h2></div><p>選擇其他課程，直接查看完整上課資訊。</p></div>
+        <div className="course-directory-heading"><div><span className="section-overline">瀏覽其他課程</span><h2>課程導覽</h2></div><p>選擇其他課程，直接查看完整上課資訊。</p></div>
         <div className="course-directory-grid">{courseNames.map((name, index) => { const summary = courseSummary(name); const isCurrent = name === course; return <Link key={name} href={`/course/${encodeURIComponent(name)}`} className={`course-directory-card ${isCurrent ? "current" : ""}`}><div className="directory-number">{String(index + 1).padStart(2, "0")}</div><div className="course-directory-copy"><div className="course-card-title"><h3>{name}</h3>{isCurrent && <span className="current-badge">目前瀏覽中</span>}</div><div className="directory-meta"><span><CalendarDays size={13} /> {summary.sessions} 次上課</span><span><span className="meta-dot" /> {summary.hours} 節</span></div></div><ChevronRight size={17} className="directory-arrow" /></Link>; })}</div>
       </section>
-      <footer className="footer-note"><span>115 · LEARNING ROUTE</span><span>資料依 PDF 課表整理 · 僅顯示講師與助教資訊</span><span>一門課，一條學習路線</span></footer>
+      <footer className="footer-note"><span>115 · 學習路線</span><span>資料依 PDF 課表整理 · 僅顯示講師與助教資訊</span><span>一門課，一條學習路線</span></footer>
     </main>
   );
 }
