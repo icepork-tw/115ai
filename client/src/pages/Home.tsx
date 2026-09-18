@@ -6,13 +6,12 @@ import {
   CalendarDays,
   ChevronLeft,
   ChevronRight,
-  CircleDot,
   Clock3,
   Sparkles,
   UserRound,
-  X,
 } from "lucide-react";
-import { courseNames, schedule, type ScheduleDay, type Session } from "@/data/schedule";
+import { Link } from "wouter";
+import { schedule, type ScheduleDay, type Session } from "@/data/schedule";
 
 type CalendarCell = { date: Date; key: string; inMonth: boolean };
 
@@ -51,11 +50,6 @@ function sessionFor(day: ScheduleDay, period: "am" | "pm") {
   return expandSession(day[period]);
 }
 
-function matchesCourse(day: ScheduleDay, course: string) {
-  if (course === "全部課程") return true;
-  return [...sessionFor(day, "am"), ...sessionFor(day, "pm")].some((session) => session.course === course);
-}
-
 function buildCalendar(month: Date): CalendarCell[] {
   const first = new Date(month.getFullYear(), month.getMonth(), 1);
   const mondayOffset = (first.getDay() + 6) % 7;
@@ -85,7 +79,7 @@ function DaySchedule({ day }: { day: ScheduleDay }) {
             {period.data.map((session, index) => (
               <div key={`${session.course}-${index}`} className="session-row">
                 <div>
-                  <h3>{session.course}</h3>
+                  <Link href={`/course/${encodeURIComponent(session.course)}`} className="course-title-link">{session.course}</Link>
                   <div className="session-teacher"><UserRound size={14} /> {session.teacher || "未標示講師"}</div>
                 </div>
                 <span className="hours-pill">{session.hours} 節</span>
@@ -101,13 +95,11 @@ function DaySchedule({ day }: { day: ScheduleDay }) {
 export default function Home() {
   const [selectedDate, setSelectedDate] = useState(FIRST_DATE);
   const [viewMonth, setViewMonth] = useState(parseDate(FIRST_DATE));
-  const [activeCourse, setActiveCourse] = useState("全部課程");
 
   const byDate = useMemo(() => new Map(schedule.map((day) => [day.date, day])), []);
   const selectedDay = byDate.get(selectedDate);
   const calendar = useMemo(() => buildCalendar(viewMonth), [viewMonth]);
   const activeIndex = schedule.findIndex((day) => day.date === selectedDate);
-  const visibleDays = schedule.filter((day) => matchesCourse(day, activeCourse));
 
   const chooseDate = (date: string) => {
     setSelectedDate(date);
@@ -122,14 +114,6 @@ export default function Home() {
 
   const changeMonth = (direction: -1 | 1) => {
     setViewMonth((current) => new Date(current.getFullYear(), current.getMonth() + direction, 1));
-  };
-
-  const chooseCourse = (course: string) => {
-    setActiveCourse(course);
-    if (course !== "全部課程") {
-      const firstMatch = schedule.find((day) => matchesCourse(day, course));
-      if (firstMatch) chooseDate(firstMatch.date);
-    }
   };
 
   return (
@@ -159,26 +143,6 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="course-strip" aria-label="課程快速瀏覽">
-        <div className="section-heading compact">
-          <div><span className="section-overline">DIRECT BROWSE</span><h2>課程標籤</h2></div>
-          <span className="course-count">{courseNames.length} 門課程</span>
-        </div>
-        <div className="course-chips">
-          <button className={`course-chip all ${activeCourse === "全部課程" ? "selected" : ""}`} onClick={() => chooseCourse("全部課程")}>
-            <CircleDot size={14} /> 全部課程
-          </button>
-          {courseNames.map((course, index) => (
-            <button key={course} className={`course-chip ${activeCourse === course ? "selected" : ""}`} onClick={() => chooseCourse(course)}>
-              <span className="chip-number">{String(index + 1).padStart(2, "0")}</span>{course}
-            </button>
-          ))}
-        </div>
-        {activeCourse !== "全部課程" && (
-          <div className="active-filter"><span>目前標記</span><strong>{activeCourse}</strong><button onClick={() => chooseCourse("全部課程")} aria-label="清除課程標記"><X size={15} /></button><small>月曆中只突出顯示這門課的上課日</small></div>
-        )}
-      </section>
-
       <section className="workspace">
         <div className="calendar-panel panel-card">
           <div className="panel-topline">
@@ -193,10 +157,9 @@ export default function Home() {
           <div className="calendar-grid">
             {calendar.map((cell) => {
               const day = byDate.get(cell.key);
-              const highlighted = day && matchesCourse(day, activeCourse);
               const selected = selectedDate === cell.key;
               return (
-                <button key={cell.key} className={`calendar-day ${!cell.inMonth ? "muted" : ""} ${day ? "has-class" : ""} ${highlighted ? "highlighted" : "dimmed"} ${selected ? "selected" : ""}`} disabled={!day} onClick={() => day && chooseDate(cell.key)}>
+                <button key={cell.key} className={`calendar-day ${!cell.inMonth ? "muted" : ""} ${day ? "has-class highlighted" : ""} ${selected ? "selected" : ""}`} disabled={!day} onClick={() => day && chooseDate(cell.key)}>
                   <span className="day-number">{cell.date.getDate()}</span>
                   {day && <span className="day-dots"><i /><i /></span>}
                   {day && <span className="day-caption">課</span>}
@@ -209,7 +172,7 @@ export default function Home() {
 
         <aside className="day-panel panel-card">
           <div className="day-panel-header">
-            <div><span className="section-overline">YOUR DAY</span><h2>{selectedDay ? displayDate(selectedDay.date) : "選擇上課日"}</h2>{selectedDay && <p className="weekday-line">星期{selectedDay.weekday} · {activeCourse === "全部課程" ? "今日課程" : "課程標記日"}</p>}</div>
+            <div><span className="section-overline">YOUR DAY</span><h2>{selectedDay ? displayDate(selectedDay.date) : "選擇上課日"}</h2>{selectedDay && <p className="weekday-line">星期{selectedDay.weekday} · 今日課程</p>}</div>
             {selectedDay && <div className="date-index">{String(activeIndex + 1).padStart(2, "0")}<small>/ {schedule.length}</small></div>}
           </div>
           {selectedDay ? <DaySchedule day={selectedDay} /> : <div className="empty-day"><CalendarDays size={28} /><p>點選月曆中的上課日</p></div>}

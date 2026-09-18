@@ -1,5 +1,5 @@
 // Generated from the PDF-verified final schedule. Do not edit manually.
-export type Session = { course: string; hours: string; teacher: string };
+export type Session = { course: string; hours: string; teacher: string; assistant: string };
 export type ScheduleDay = { date: string; weekday: string; am: Session; pm: Session };
 
 export const schedule: ScheduleDay[] = [
@@ -9,12 +9,14 @@ export const schedule: ScheduleDay[] = [
     "am": {
       "course": "性別平等課程",
       "hours": "3",
-      "teacher": "邱志廣"
+      "teacher": "邱志廣",
+      "assistant": ""
     },
     "pm": {
       "course": "生成式AI的產業應用與發展趨勢",
       "hours": "3",
-      "teacher": "黃俊真"
+      "teacher": "黃俊真",
+      "assistant": ""
     }
   },
   {
@@ -23,12 +25,14 @@ export const schedule: ScheduleDay[] = [
     "am": {
       "course": "資通訊科技概念",
       "hours": "3",
-      "teacher": "邱志祥"
+      "teacher": "邱志祥",
+      "assistant": ""
     },
     "pm": {
       "course": "資通訊科技概念",
       "hours": "3",
-      "teacher": "邱志祥"
+      "teacher": "邱志祥",
+      "assistant": ""
     }
   },
   {
@@ -37,12 +41,14 @@ export const schedule: ScheduleDay[] = [
     "am": {
       "course": "文書處理應用",
       "hours": "3",
-      "teacher": "董虹伶"
+      "teacher": "董虹伶",
+      "assistant": "張國賢"
     },
     "pm": {
       "course": "文書處理應用",
       "hours": "3",
-      "teacher": "董虹伶"
+      "teacher": "董虹伶",
+      "assistant": "張國賢"
     }
   },
   {
@@ -51,12 +57,14 @@ export const schedule: ScheduleDay[] = [
     "am": {
       "course": "電腦軟體、硬體架構",
       "hours": "3",
-      "teacher": "馮治平"
+      "teacher": "馮治平",
+      "assistant": ""
     },
     "pm": {
       "course": "電腦軟體、硬體架構",
       "hours": "3",
-      "teacher": "馮治平"
+      "teacher": "馮治平",
+      "assistant": ""
     }
   },
   {
@@ -65,12 +73,14 @@ export const schedule: ScheduleDay[] = [
     "am": {
       "course": "雲端協作與行政流程數位化",
       "hours": "3",
-      "teacher": "邱品勳"
+      "teacher": "邱品勳",
+      "assistant": "張國賢"
     },
     "pm": {
       "course": "雲端協作與行政流程數位化",
       "hours": "3",
-      "teacher": "邱志廣"
+      "teacher": "邱志廣",
+      "assistant": "張國賢"
     }
   },
   {
@@ -79,12 +89,14 @@ export const schedule: ScheduleDay[] = [
     "am": {
       "course": "LINUX引論",
       "hours": "3",
-      "teacher": "陳建良"
+      "teacher": "陳建良",
+      "assistant": ""
     },
     "pm": {
       "course": "LINUX引論",
       "hours": "3",
-      "teacher": "陳建良"
+      "teacher": "陳建良",
+      "assistant": ""
     }
   },
   {
@@ -93,12 +105,14 @@ export const schedule: ScheduleDay[] = [
     "am": {
       "course": "電腦硬體基礎裝修與維護",
       "hours": "3",
-      "teacher": "馮治平"
+      "teacher": "馮治平",
+      "assistant": "黃俊堯"
     },
     "pm": {
       "course": "電腦硬體基礎裝修與維護",
       "hours": "3",
-      "teacher": "馮治平"
+      "teacher": "馮治平",
+      "assistant": "黃俊堯"
     }
   },
   {
@@ -107,12 +121,14 @@ export const schedule: ScheduleDay[] = [
     "am": {
       "course": "基礎電學與電路",
       "hours": "3",
-      "teacher": "邱品勳"
+      "teacher": "邱品勳",
+      "assistant": ""
     },
     "pm": {
       "course": "基礎電學與電路",
       "hours": "3",
-      "teacher": "邱品勳"
+      "teacher": "邱品勳",
+      "assistant": ""
     }
   },
   {
@@ -121,12 +137,14 @@ export const schedule: ScheduleDay[] = [
     "am": {
       "course": "生成式AI的產業應用與發展趨勢",
       "hours": "3",
-      "teacher": "黃俊真"
+      "teacher": "黃俊真",
+      "assistant": ""
     },
     "pm": {
       "course": "基礎電腦與數位環境建構",
       "hours": "3",
-      "teacher": "邱志廣"
+      "teacher": "邱志廣",
+      "assistant": "張國賢"
     }
   },
   {
@@ -135,12 +153,14 @@ export const schedule: ScheduleDay[] = [
     "am": {
       "course": "電腦硬體基礎裝修與維護",
       "hours": "3",
-      "teacher": "馮治平"
+      "teacher": "馮治平",
+      "assistant": "黃俊堯"
     },
     "pm": {
       "course": "電腦硬體基礎裝修與維護",
       "hours": "3",
-      "teacher": "馮治平"
+      "teacher": "馮治平",
+      "assistant": "黃俊堯"
     }
   },
   {
@@ -149,12 +169,14 @@ export const schedule: ScheduleDay[] = [
     "am": {
       "course": "雲端協作與行政流程數位化",
       "hours": "3",
-      "teacher": "邱品勳"
+      "teacher": "邱品勳",
+      "assistant": "黃俊堯"
     },
     "pm": {
       "course": "雲端協作與行政流程數位化",
       "hours": "3",
-      "teacher": "邱品勳"
+      "teacher": "邱品勳",
+      "assistant": "黃俊堯"
     }
   },
   {
@@ -163,12 +185,14 @@ export const schedule: ScheduleDay[] = [
     "am": {
       "course": "試算表與資料處理",
       "hours": "3",
-      "teacher": "黃俊真"
+      "teacher": "黃俊真",
+      "assistant": "邵立峰"
     },
     "pm": {
       "course": "試算表與資料處理",
       "hours": "3",
-      "teacher": "黃俊真"
+      "teacher": "黃俊真",
+      "assistant": "邵立峰"
     }
   },
   {
@@ -177,12 +201,14 @@ export const schedule: ScheduleDay[] = [
     "am": {
       "course": "網路概論",
       "hours": "3",
-      "teacher": "陳建良"
+      "teacher": "陳建良",
+      "assistant": ""
     },
     "pm": {
       "course": "電腦軟體、硬體架構",
       "hours": "3",
-      "teacher": "馮治平"
+      "teacher": "馮治平",
+      "assistant": ""
     }
   },
   {
@@ -191,12 +217,14 @@ export const schedule: ScheduleDay[] = [
     "am": {
       "course": "網路概論",
       "hours": "3",
-      "teacher": "陳建良"
+      "teacher": "陳建良",
+      "assistant": ""
     },
     "pm": {
       "course": "網路概論",
       "hours": "3",
-      "teacher": "陳建良"
+      "teacher": "陳建良",
+      "assistant": ""
     }
   },
   {
@@ -205,12 +233,14 @@ export const schedule: ScheduleDay[] = [
     "am": {
       "course": "電腦硬體基礎裝修與維護",
       "hours": "3",
-      "teacher": "馮治平"
+      "teacher": "馮治平",
+      "assistant": "黃俊堯"
     },
     "pm": {
       "course": "電腦硬體基礎裝修與維護",
       "hours": "3",
-      "teacher": "馮治平"
+      "teacher": "馮治平",
+      "assistant": "黃俊堯"
     }
   },
   {
@@ -219,12 +249,14 @@ export const schedule: ScheduleDay[] = [
     "am": {
       "course": "文書處理應用",
       "hours": "3",
-      "teacher": "董虹伶"
+      "teacher": "董虹伶",
+      "assistant": "邵立峰"
     },
     "pm": {
       "course": "文書處理應用",
       "hours": "3",
-      "teacher": "董虹伶"
+      "teacher": "董虹伶",
+      "assistant": "邵立峰"
     }
   },
   {
@@ -233,12 +265,14 @@ export const schedule: ScheduleDay[] = [
     "am": {
       "course": "基礎電腦與數位環境建構",
       "hours": "3",
-      "teacher": "邱志廣"
+      "teacher": "邱志廣",
+      "assistant": "黃俊堯"
     },
     "pm": {
       "course": "基礎電腦與數位環境建構",
       "hours": "3",
-      "teacher": "邱志廣"
+      "teacher": "邱志廣",
+      "assistant": "黃俊堯"
     }
   },
   {
@@ -247,12 +281,14 @@ export const schedule: ScheduleDay[] = [
     "am": {
       "course": "簡報製作",
       "hours": "3",
-      "teacher": "陳建良"
+      "teacher": "陳建良",
+      "assistant": "邵立峰"
     },
     "pm": {
       "course": "簡報製作",
       "hours": "3",
-      "teacher": "陳建良"
+      "teacher": "陳建良",
+      "assistant": "邵立峰"
     }
   },
   {
@@ -261,12 +297,14 @@ export const schedule: ScheduleDay[] = [
     "am": {
       "course": "電腦硬體基礎裝修與維護",
       "hours": "3",
-      "teacher": "馮治平"
+      "teacher": "馮治平",
+      "assistant": "黃俊堯"
     },
     "pm": {
       "course": "電腦硬體基礎裝修與維護",
       "hours": "3",
-      "teacher": "馮治平"
+      "teacher": "馮治平",
+      "assistant": "黃俊堯"
     }
   },
   {
@@ -275,12 +313,14 @@ export const schedule: ScheduleDay[] = [
     "am": {
       "course": "文書處理應用",
       "hours": "3",
-      "teacher": "董虹伶"
+      "teacher": "董虹伶",
+      "assistant": "張國賢"
     },
     "pm": {
       "course": "文書處理應用",
       "hours": "3",
-      "teacher": "董虹伶"
+      "teacher": "董虹伶",
+      "assistant": "張國賢"
     }
   },
   {
@@ -289,12 +329,14 @@ export const schedule: ScheduleDay[] = [
     "am": {
       "course": "試算表與資料處理",
       "hours": "3",
-      "teacher": "黃俊真"
+      "teacher": "黃俊真",
+      "assistant": "張國賢"
     },
     "pm": {
       "course": "試算表與資料處理",
       "hours": "3",
-      "teacher": "黃俊真"
+      "teacher": "黃俊真",
+      "assistant": "張國賢"
     }
   },
   {
@@ -303,12 +345,14 @@ export const schedule: ScheduleDay[] = [
     "am": {
       "course": "溝通技巧與人際關係",
       "hours": "3",
-      "teacher": "謝慧瑩"
+      "teacher": "謝慧瑩",
+      "assistant": ""
     },
     "pm": {
       "course": "溝通技巧與人際關係",
       "hours": "3",
-      "teacher": "謝慧瑩"
+      "teacher": "謝慧瑩",
+      "assistant": ""
     }
   },
   {
@@ -317,12 +361,14 @@ export const schedule: ScheduleDay[] = [
     "am": {
       "course": "簡報製作",
       "hours": "3",
-      "teacher": "陳建良"
+      "teacher": "陳建良",
+      "assistant": "張國賢"
     },
     "pm": {
       "course": "簡報製作",
       "hours": "3",
-      "teacher": "陳建良"
+      "teacher": "陳建良",
+      "assistant": "張國賢"
     }
   },
   {
@@ -331,12 +377,14 @@ export const schedule: ScheduleDay[] = [
     "am": {
       "course": "電腦硬體基礎裝修與維護",
       "hours": "3",
-      "teacher": "馮治平"
+      "teacher": "馮治平",
+      "assistant": "黃俊堯"
     },
     "pm": {
       "course": "電腦硬體基礎裝修與維護",
       "hours": "3",
-      "teacher": "馮治平"
+      "teacher": "馮治平",
+      "assistant": "黃俊堯"
     }
   },
   {
@@ -345,12 +393,14 @@ export const schedule: ScheduleDay[] = [
     "am": {
       "course": "試算表與資料處理",
       "hours": "3",
-      "teacher": "黃俊真"
+      "teacher": "黃俊真",
+      "assistant": "黃俊堯"
     },
     "pm": {
       "course": "試算表與資料處理",
       "hours": "3",
-      "teacher": "黃俊真"
+      "teacher": "黃俊真",
+      "assistant": "黃俊堯"
     }
   },
   {
@@ -359,12 +409,14 @@ export const schedule: ScheduleDay[] = [
     "am": {
       "course": "文書處理應用",
       "hours": "3",
-      "teacher": "董虹伶"
+      "teacher": "董虹伶",
+      "assistant": "張國賢"
     },
     "pm": {
       "course": "文書處理應用",
       "hours": "3",
-      "teacher": "董虹伶"
+      "teacher": "董虹伶",
+      "assistant": "張國賢"
     }
   },
   {
@@ -373,12 +425,14 @@ export const schedule: ScheduleDay[] = [
     "am": {
       "course": "基礎電腦與數位環境建構",
       "hours": "3",
-      "teacher": "邱志廣"
+      "teacher": "邱志廣",
+      "assistant": "張國賢"
     },
     "pm": {
       "course": "基礎電腦與數位環境建構",
       "hours": "3",
-      "teacher": "邱志廣"
+      "teacher": "邱志廣",
+      "assistant": "張國賢"
     }
   },
   {
@@ -387,12 +441,14 @@ export const schedule: ScheduleDay[] = [
     "am": {
       "course": "電腦硬體基礎裝修與維護",
       "hours": "3",
-      "teacher": "馮治平"
+      "teacher": "馮治平",
+      "assistant": "黃俊堯"
     },
     "pm": {
       "course": "電腦硬體基礎裝修與維護",
       "hours": "3",
-      "teacher": "馮治平"
+      "teacher": "馮治平",
+      "assistant": "黃俊堯"
     }
   },
   {
@@ -401,12 +457,14 @@ export const schedule: ScheduleDay[] = [
     "am": {
       "course": "文書處理應用",
       "hours": "3",
-      "teacher": "董虹伶"
+      "teacher": "董虹伶",
+      "assistant": "張國賢"
     },
     "pm": {
       "course": "文書處理應用",
       "hours": "3",
-      "teacher": "董虹伶"
+      "teacher": "董虹伶",
+      "assistant": "張國賢"
     }
   },
   {
@@ -415,12 +473,14 @@ export const schedule: ScheduleDay[] = [
     "am": {
       "course": "AI發展與原理入門",
       "hours": "3",
-      "teacher": "邱品勳"
+      "teacher": "邱品勳",
+      "assistant": ""
     },
     "pm": {
       "course": "AI發展與原理入門",
       "hours": "3",
-      "teacher": "邱品勳"
+      "teacher": "邱品勳",
+      "assistant": ""
     }
   },
   {
@@ -429,12 +489,14 @@ export const schedule: ScheduleDay[] = [
     "am": {
       "course": "職場AI工具整合應用",
       "hours": "3",
-      "teacher": "邱品勳"
+      "teacher": "邱品勳",
+      "assistant": "張國賢"
     },
     "pm": {
       "course": "職場AI工具整合應用",
       "hours": "3",
-      "teacher": "邱品勳"
+      "teacher": "邱品勳",
+      "assistant": "張國賢"
     }
   },
   {
@@ -443,12 +505,14 @@ export const schedule: ScheduleDay[] = [
     "am": {
       "course": "簡報製作",
       "hours": "3",
-      "teacher": "陳建良"
+      "teacher": "陳建良",
+      "assistant": "邵立峰"
     },
     "pm": {
       "course": "簡報製作",
       "hours": "3",
-      "teacher": "陳建良"
+      "teacher": "陳建良",
+      "assistant": "邵立峰"
     }
   },
   {
@@ -457,12 +521,14 @@ export const schedule: ScheduleDay[] = [
     "am": {
       "course": "電腦硬體基礎裝修與維護",
       "hours": "3",
-      "teacher": "馮治平"
+      "teacher": "馮治平",
+      "assistant": "黃俊堯"
     },
     "pm": {
       "course": "電腦硬體基礎裝修與維護",
       "hours": "3",
-      "teacher": "馮治平"
+      "teacher": "馮治平",
+      "assistant": "黃俊堯"
     }
   },
   {
@@ -471,12 +537,14 @@ export const schedule: ScheduleDay[] = [
     "am": {
       "course": "基礎電腦與數位環境建構",
       "hours": "3",
-      "teacher": "邱志廣"
+      "teacher": "邱志廣",
+      "assistant": "黃俊堯"
     },
     "pm": {
       "course": "基礎電腦與數位環境建構",
       "hours": "3",
-      "teacher": "邱志廣"
+      "teacher": "邱志廣",
+      "assistant": "黃俊堯"
     }
   },
   {
@@ -485,12 +553,14 @@ export const schedule: ScheduleDay[] = [
     "am": {
       "course": "AI短影音與行銷應用",
       "hours": "3",
-      "teacher": "邱品勳"
+      "teacher": "邱品勳",
+      "assistant": "黃俊堯"
     },
     "pm": {
       "course": "AI短影音與行銷應用",
       "hours": "3",
-      "teacher": "邱品勳"
+      "teacher": "邱品勳",
+      "assistant": "黃俊堯"
     }
   },
   {
@@ -499,12 +569,14 @@ export const schedule: ScheduleDay[] = [
     "am": {
       "course": "職場AI工具整合應用",
       "hours": "3",
-      "teacher": "邱品勳"
+      "teacher": "邱品勳",
+      "assistant": "黃俊堯"
     },
     "pm": {
       "course": "職場AI工具整合應用",
       "hours": "3",
-      "teacher": "邱品勳"
+      "teacher": "邱品勳",
+      "assistant": "黃俊堯"
     }
   },
   {
@@ -513,12 +585,14 @@ export const schedule: ScheduleDay[] = [
     "am": {
       "course": "試算表與資料處理",
       "hours": "3",
-      "teacher": "黃俊真"
+      "teacher": "黃俊真",
+      "assistant": "張國賢"
     },
     "pm": {
       "course": "試算表與資料處理",
       "hours": "3",
-      "teacher": "黃俊真"
+      "teacher": "黃俊真",
+      "assistant": "張國賢"
     }
   },
   {
@@ -527,12 +601,14 @@ export const schedule: ScheduleDay[] = [
     "am": {
       "course": "電腦硬體基礎裝修與維護",
       "hours": "3",
-      "teacher": "馮治平"
+      "teacher": "馮治平",
+      "assistant": "黃俊堯"
     },
     "pm": {
       "course": "電腦硬體基礎裝修與維護",
       "hours": "3",
-      "teacher": "馮治平"
+      "teacher": "馮治平",
+      "assistant": "黃俊堯"
     }
   },
   {
@@ -541,12 +617,14 @@ export const schedule: ScheduleDay[] = [
     "am": {
       "course": "試算表與資料處理",
       "hours": "3",
-      "teacher": "黃俊真"
+      "teacher": "黃俊真",
+      "assistant": "戴意倩"
     },
     "pm": {
       "course": "試算表與資料處理",
       "hours": "3",
-      "teacher": "黃俊真"
+      "teacher": "黃俊真",
+      "assistant": "戴意倩"
     }
   },
   {
@@ -555,12 +633,14 @@ export const schedule: ScheduleDay[] = [
     "am": {
       "course": "基礎電腦與數位環境建構",
       "hours": "3",
-      "teacher": "邱志廣"
+      "teacher": "邱志廣",
+      "assistant": "戴意倩"
     },
     "pm": {
       "course": "性別平等課程、就業媒合",
       "hours": "1、2",
-      "teacher": "邱志廣"
+      "teacher": "邱志廣",
+      "assistant": ""
     }
   },
   {
@@ -569,12 +649,14 @@ export const schedule: ScheduleDay[] = [
     "am": {
       "course": "AI短影音與行銷應用",
       "hours": "3",
-      "teacher": "邱品勳"
+      "teacher": "邱品勳",
+      "assistant": "黃俊堯"
     },
     "pm": {
       "course": "AI短影音與行銷應用",
       "hours": "3",
-      "teacher": "邱品勳"
+      "teacher": "邱品勳",
+      "assistant": "黃俊堯"
     }
   },
   {
@@ -583,12 +665,14 @@ export const schedule: ScheduleDay[] = [
     "am": {
       "course": "試算表與資料處理",
       "hours": "3",
-      "teacher": "黃俊真"
+      "teacher": "黃俊真",
+      "assistant": "戴意倩"
     },
     "pm": {
       "course": "試算表與資料處理",
       "hours": "3",
-      "teacher": "黃俊真"
+      "teacher": "黃俊真",
+      "assistant": "戴意倩"
     }
   },
   {
@@ -597,12 +681,14 @@ export const schedule: ScheduleDay[] = [
     "am": {
       "course": "電腦硬體基礎裝修與維護",
       "hours": "3",
-      "teacher": "馮治平"
+      "teacher": "馮治平",
+      "assistant": "黃俊堯"
     },
     "pm": {
       "course": "電腦硬體基礎裝修與維護",
       "hours": "3",
-      "teacher": "馮治平"
+      "teacher": "馮治平",
+      "assistant": "黃俊堯"
     }
   },
   {
@@ -611,12 +697,14 @@ export const schedule: ScheduleDay[] = [
     "am": {
       "course": "文書處理應用",
       "hours": "3",
-      "teacher": "董虹伶"
+      "teacher": "董虹伶",
+      "assistant": "黃俊堯"
     },
     "pm": {
       "course": "文書處理應用",
       "hours": "3",
-      "teacher": "董虹伶"
+      "teacher": "董虹伶",
+      "assistant": "黃俊堯"
     }
   },
   {
@@ -625,12 +713,14 @@ export const schedule: ScheduleDay[] = [
     "am": {
       "course": "職場AI工具整合應用",
       "hours": "3",
-      "teacher": "邱品勳"
+      "teacher": "邱品勳",
+      "assistant": "黃俊堯"
     },
     "pm": {
       "course": "職場AI工具整合應用",
       "hours": "3",
-      "teacher": "邱品勳"
+      "teacher": "邱品勳",
+      "assistant": "黃俊堯"
     }
   },
   {
@@ -639,12 +729,14 @@ export const schedule: ScheduleDay[] = [
     "am": {
       "course": "AI短影音與行銷應用",
       "hours": "3",
-      "teacher": "邱品勳"
+      "teacher": "邱品勳",
+      "assistant": "邵立峰"
     },
     "pm": {
       "course": "AI短影音與行銷應用",
       "hours": "3",
-      "teacher": "邱品勳"
+      "teacher": "邱品勳",
+      "assistant": "邵立峰"
     }
   },
   {
@@ -653,12 +745,14 @@ export const schedule: ScheduleDay[] = [
     "am": {
       "course": "試算表與資料處理",
       "hours": "3",
-      "teacher": "黃俊真"
+      "teacher": "黃俊真",
+      "assistant": "戴意倩"
     },
     "pm": {
       "course": "試算表與資料處理",
       "hours": "3",
-      "teacher": "黃俊真"
+      "teacher": "黃俊真",
+      "assistant": "戴意倩"
     }
   },
   {
@@ -667,12 +761,14 @@ export const schedule: ScheduleDay[] = [
     "am": {
       "course": "電腦硬體基礎裝修與維護",
       "hours": "3",
-      "teacher": "馮治平"
+      "teacher": "馮治平",
+      "assistant": "黃俊堯"
     },
     "pm": {
       "course": "電腦硬體基礎裝修與維護",
       "hours": "3",
-      "teacher": "馮治平"
+      "teacher": "馮治平",
+      "assistant": "黃俊堯"
     }
   },
   {
@@ -681,12 +777,14 @@ export const schedule: ScheduleDay[] = [
     "am": {
       "course": "雲端協作與行政流程數位化",
       "hours": "3",
-      "teacher": "邱志廣"
+      "teacher": "邱志廣",
+      "assistant": "邵立峰"
     },
     "pm": {
       "course": "雲端協作與行政流程數位化",
       "hours": "3",
-      "teacher": "邱志廣"
+      "teacher": "邱志廣",
+      "assistant": "邵立峰"
     }
   },
   {
@@ -695,12 +793,14 @@ export const schedule: ScheduleDay[] = [
     "am": {
       "course": "職場AI工具整合應用",
       "hours": "3",
-      "teacher": "邱品勳"
+      "teacher": "邱品勳",
+      "assistant": "黃俊堯"
     },
     "pm": {
       "course": "職場AI工具整合應用",
       "hours": "3",
-      "teacher": "邱品勳"
+      "teacher": "邱品勳",
+      "assistant": "黃俊堯"
     }
   },
   {
@@ -709,12 +809,14 @@ export const schedule: ScheduleDay[] = [
     "am": {
       "course": "AI短影音與行銷應用",
       "hours": "3",
-      "teacher": "邱品勳"
+      "teacher": "邱品勳",
+      "assistant": "戴意倩"
     },
     "pm": {
       "course": "AI短影音與行銷應用",
       "hours": "3",
-      "teacher": "邱品勳"
+      "teacher": "邱品勳",
+      "assistant": "戴意倩"
     }
   },
   {
@@ -723,12 +825,14 @@ export const schedule: ScheduleDay[] = [
     "am": {
       "course": "試算表與資料處理",
       "hours": "3",
-      "teacher": "黃俊真"
+      "teacher": "黃俊真",
+      "assistant": "張國賢"
     },
     "pm": {
       "course": "試算表與資料處理",
       "hours": "3",
-      "teacher": "黃俊真"
+      "teacher": "黃俊真",
+      "assistant": "張國賢"
     }
   },
   {
@@ -737,12 +841,14 @@ export const schedule: ScheduleDay[] = [
     "am": {
       "course": "電腦硬體基礎裝修與維護",
       "hours": "3",
-      "teacher": "馮治平"
+      "teacher": "馮治平",
+      "assistant": "黃俊堯"
     },
     "pm": {
       "course": "電腦硬體基礎裝修與維護",
       "hours": "3",
-      "teacher": "馮治平"
+      "teacher": "馮治平",
+      "assistant": "黃俊堯"
     }
   },
   {
@@ -751,12 +857,14 @@ export const schedule: ScheduleDay[] = [
     "am": {
       "course": "勞動權利與詐騙防範",
       "hours": "3",
-      "teacher": "邱志廣"
+      "teacher": "邱志廣",
+      "assistant": ""
     },
     "pm": {
       "course": "勞動權利與詐騙防範",
       "hours": "3",
-      "teacher": "邱志廣"
+      "teacher": "邱志廣",
+      "assistant": ""
     }
   },
   {
@@ -765,12 +873,14 @@ export const schedule: ScheduleDay[] = [
     "am": {
       "course": "AI短影音與行銷應用",
       "hours": "3",
-      "teacher": "邱品勳"
+      "teacher": "邱品勳",
+      "assistant": "黃俊堯"
     },
     "pm": {
       "course": "AI短影音與行銷應用",
       "hours": "3",
-      "teacher": "邱品勳"
+      "teacher": "邱品勳",
+      "assistant": "黃俊堯"
     }
   },
   {
@@ -779,12 +889,14 @@ export const schedule: ScheduleDay[] = [
     "am": {
       "course": "Office實用整合",
       "hours": "3",
-      "teacher": "黃俊真"
+      "teacher": "黃俊真",
+      "assistant": "張國賢"
     },
     "pm": {
       "course": "Office實用整合",
       "hours": "3",
-      "teacher": "黃俊真"
+      "teacher": "黃俊真",
+      "assistant": "張國賢"
     }
   },
   {
@@ -793,12 +905,14 @@ export const schedule: ScheduleDay[] = [
     "am": {
       "course": "Office實用整合",
       "hours": "3",
-      "teacher": "黃俊真"
+      "teacher": "黃俊真",
+      "assistant": "邵立峰"
     },
     "pm": {
       "course": "Office實用整合",
       "hours": "3",
-      "teacher": "黃俊真"
+      "teacher": "黃俊真",
+      "assistant": "邵立峰"
     }
   },
   {
@@ -807,12 +921,14 @@ export const schedule: ScheduleDay[] = [
     "am": {
       "course": "電腦硬體基礎裝修與維護",
       "hours": "3",
-      "teacher": "馮治平"
+      "teacher": "馮治平",
+      "assistant": "黃俊堯"
     },
     "pm": {
       "course": "電腦硬體基礎裝修與維護",
       "hours": "3",
-      "teacher": "馮治平"
+      "teacher": "馮治平",
+      "assistant": "黃俊堯"
     }
   },
   {
@@ -821,12 +937,14 @@ export const schedule: ScheduleDay[] = [
     "am": {
       "course": "Office實用整合",
       "hours": "3",
-      "teacher": "黃俊真"
+      "teacher": "黃俊真",
+      "assistant": "邵立峰"
     },
     "pm": {
       "course": "Office實用整合",
       "hours": "3",
-      "teacher": "黃俊真"
+      "teacher": "黃俊真",
+      "assistant": "邵立峰"
     }
   },
   {
@@ -835,12 +953,14 @@ export const schedule: ScheduleDay[] = [
     "am": {
       "course": "就業市場趨勢分析及求職技巧",
       "hours": "4",
-      "teacher": "邱志廣"
+      "teacher": "邱志廣",
+      "assistant": ""
     },
     "pm": {
       "course": "就業媒合",
       "hours": "2",
-      "teacher": "邱志廣"
+      "teacher": "邱志廣",
+      "assistant": ""
     }
   }
 ];
