@@ -31,6 +31,8 @@ function keyForDate(date: Date) {
   return `${y}-${m}-${d}`;
 }
 
+const DEFAULT_DATE = schedule.find((day) => day.date >= keyForDate(new Date()))?.date ?? FIRST_DATE;
+
 function displayDate(value: string) {
   const date = parseDate(value);
   return `${date.getFullYear()} 年 ${date.getMonth() + 1} 月 ${date.getDate()} 日`;
@@ -93,8 +95,8 @@ function DaySchedule({ day }: { day: ScheduleDay }) {
 }
 
 export default function Home() {
-  const [selectedDate, setSelectedDate] = useState(FIRST_DATE);
-  const [viewMonth, setViewMonth] = useState(parseDate(FIRST_DATE));
+  const [selectedDate, setSelectedDate] = useState(DEFAULT_DATE);
+  const [viewMonth, setViewMonth] = useState(parseDate(DEFAULT_DATE));
 
   const byDate = useMemo(() => new Map(schedule.map((day) => [day.date, day])), []);
   const selectedDay = byDate.get(selectedDate);
@@ -111,13 +113,6 @@ export default function Home() {
     const nextIndex = activeIndex + direction;
     if (nextIndex >= 0 && nextIndex < schedule.length) chooseDate(schedule[nextIndex].date);
   };
-
-  const jumpToDay = (date: string) => {
-    chooseDate(date);
-    window.setTimeout(() => document.getElementById("today-panel")?.scrollIntoView({ behavior: "smooth", block: "start" }), 0);
-  };
-
-  const upcomingDay = schedule[Math.min(activeIndex + 1, schedule.length - 1)];
 
   const changeMonth = (direction: -1 | 1) => {
     setViewMonth((current) => new Date(current.getFullYear(), current.getMonth() + direction, 1));
@@ -167,17 +162,6 @@ export default function Home() {
         </Link>
       </section>
 
-      <section className="home-quick-links" aria-label="快速查看">
-        <button className="quick-link-card today-quick" onClick={() => jumpToDay(selectedDate)}>
-          <div className="quick-link-kicker"><span className="quick-dot today-dot" /> QUICK VIEW</div>
-          <div className="quick-link-main"><div><h2>今日課程</h2><p>{displayDate(selectedDate)} · 星期{selectedDay?.weekday}</p></div><ArrowRight size={22} /></div>
-        </button>
-        <button className="quick-link-card upcoming-quick" onClick={() => jumpToDay(upcomingDay.date)}>
-          <div className="quick-link-kicker"><span className="quick-dot upcoming-dot" /> NEXT UP</div>
-          <div className="quick-link-main"><div><h2>即將到來課程</h2><p>{displayDate(upcomingDay.date)} · 星期{upcomingDay.weekday}</p></div><ArrowRight size={22} /></div>
-        </button>
-      </section>
-
       <section className="workspace">
         <div className="calendar-panel panel-card">
           <div className="panel-topline">
@@ -205,7 +189,7 @@ export default function Home() {
           <div className="calendar-legend"><span><i className="legend-dot accent" /> 有課程</span><span><i className="legend-dot selected-dot" /> 目前日期</span><span className="legend-note">點擊日期查看課程</span></div>
         </div>
 
-        <aside id="today-panel" className="day-panel panel-card">
+        <aside className="day-panel panel-card">
           <div className="day-panel-header">
             <div><span className="section-overline">YOUR DAY</span><h2>{selectedDay ? displayDate(selectedDay.date) : "選擇上課日"}</h2>{selectedDay && <p className="weekday-line">星期{selectedDay.weekday} · 今日課程</p>}</div>
             {selectedDay && <div className="date-index">{String(activeIndex + 1).padStart(2, "0")}<small>/ {schedule.length}</small></div>}
