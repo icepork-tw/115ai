@@ -254,3 +254,19 @@ button:focus-visible { outline: 3px solid rgba(232,123,75,.42); outline-offset: 
 .direct-card-arrow { flex: 0 0 auto; color: var(--ink-soft); transition: transform .18s ease, color .18s ease; }
 .home-direct-card:hover .direct-card-arrow { color: var(--orange-dark); transform: translateX(5px); }
 @media (max-width: 620px) { .home-direct-links { grid-template-columns: 1fr; gap: 9px; margin-top: -8px; } .home-direct-card { min-height: 112px; padding: 17px; gap: 13px; } .direct-card-icon { width: 43px; height: 43px; } .direct-card-icon svg { width: 21px; height: 21px; } .direct-card-copy h2 { font-size: 20px; } .direct-card-copy p { font-size: 10px; } }
+
+.home-quick-links { max-width: 1340px; margin: 14px auto 0; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px; position: relative; }
+.quick-link-card { min-height: 99px; padding: 17px 21px; border: 1px solid var(--line); text-align: left; color: var(--ink); cursor: pointer; transition: transform .18s ease, box-shadow .18s ease, border-color .18s ease; }
+.quick-link-card:hover { transform: translateY(-3px); border-color: var(--orange); box-shadow: 6px 8px 0 rgba(22,54,50,.055); }
+.today-quick { background: rgba(251,250,246,.84); }
+.upcoming-quick { background: rgba(226,237,237,.72); }
+.quick-link-kicker { display: flex; align-items: center; gap: 7px; color: var(--ink-soft); font-family: 'DM Mono', monospace; font-size: 9px; letter-spacing: .08em; }
+.quick-dot { width: 7px; height: 7px; border-radius: 50%; display: inline-block; }
+.today-dot { background: var(--orange); }
+.upcoming-dot { background: var(--blue); }
+.quick-link-main { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-top: 9px; }
+.quick-link-main h2 { margin: 0 0 4px; font-size: 19px; letter-spacing: -.045em; }
+.quick-link-main p { margin: 0; color: var(--ink-soft); font-size: 10px; }
+.quick-link-main > svg { flex: 0 0 auto; color: var(--ink-soft); transition: transform .18s ease, color .18s ease; }
+.quick-link-card:hover .quick-link-main > svg { transform: translateX(4px); color: var(--orange-dark); }
+@media (max-width: 620px) { .home-quick-links { grid-template-columns: 1fr; gap: 8px; margin-top: 9px; } .quick-link-card { min-height: 87px; padding: 14px 16px; } .quick-link-main h2 { font-size: 17px; } }
