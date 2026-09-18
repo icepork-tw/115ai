@@ -214,3 +214,29 @@ button:focus-visible { outline: 3px solid rgba(232,123,75,.42); outline-offset: 
   .people-card { padding: 19px 15px; }
   .other-courses { margin-top: 28px; padding-top: 20px; }
 }
+
+.topbar-nav { display: flex; align-items: center; gap: 19px; }
+.topbar-link { display: inline-flex; align-items: center; gap: 6px; color: var(--ink); text-decoration: none; font-size: 11px; font-weight: 600; transition: color .16s ease, transform .16s ease; }
+.topbar-link:hover { color: var(--orange-dark); transform: translateY(-1px); }
+.directory-shell .topbar { margin-bottom: 0; }
+.directory-hero { max-width: 1340px; margin: 0 auto; padding: 43px 0 38px; position: relative; }
+.directory-hero .back-link { margin-bottom: 34px; }
+.directory-hero h1 { margin: 9px 0 13px; font-size: clamp(38px, 5vw, 66px); line-height: 1.05; letter-spacing: -.07em; }
+.directory-grid { max-width: 1340px; margin: 0 auto; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; position: relative; }
+.directory-card { min-height: 105px; display: flex; align-items: center; gap: 17px; padding: 19px 21px; border: 1px solid var(--line); background: rgba(251,250,246,.78); color: var(--ink); text-decoration: none; transition: transform .18s ease, border-color .18s ease, box-shadow .18s ease; }
+.directory-card:hover { transform: translateY(-3px); border-color: var(--orange); box-shadow: 7px 8px 0 rgba(22,54,50,.05); }
+.directory-number { align-self: flex-start; padding-top: 4px; color: var(--orange-dark); font-family: 'DM Mono', monospace; font-size: 11px; }
+.directory-card-body { min-width: 0; flex: 1; }
+.directory-card-body h2 { margin: 0 0 12px; font-size: 16px; line-height: 1.4; letter-spacing: -.03em; }
+.directory-meta { display: flex; align-items: center; flex-wrap: wrap; gap: 13px; color: var(--ink-soft); font-family: 'DM Mono', monospace; font-size: 9px; }
+.directory-meta span { display: inline-flex; align-items: center; gap: 5px; }
+.meta-dot { width: 5px; height: 5px; display: inline-block; border-radius: 50%; background: var(--orange); }
+.directory-arrow { flex: 0 0 auto; color: var(--ink-soft); transition: transform .18s ease, color .18s ease; }
+.directory-card:hover .directory-arrow { transform: translateX(4px); color: var(--orange-dark); }
+.avatar-mark { width: 36px; height: 36px; flex: 0 0 auto; display: grid; place-items: center; border: 1px solid rgba(109,159,162,.55); border-radius: 50%; color: #4e8488; }
+.lecturer-card .directory-card-body h2 { margin-bottom: 10px; }
+.course-person-link { color: var(--ink); text-decoration: none; line-height: 1.45; }
+.course-person-link:hover { color: var(--orange-dark); }
+.directory-shell .footer-note { margin-top: 38px; }
+@media (max-width: 900px) { .topbar-nav { gap: 10px; } .topbar-note { display: none; } }
+@media (max-width: 620px) { .topbar-nav { gap: 9px; } .topbar-link { font-size: 0; } .topbar-link svg { width: 17px; height: 17px; } .directory-hero { padding: 31px 0 28px; } .directory-grid { grid-template-columns: 1fr; gap: 9px; } .directory-card { min-height: 91px; padding: 15px; } .directory-card-body h2 { font-size: 14px; } }

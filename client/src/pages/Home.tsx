@@ -127,7 +127,11 @@ export default function Home() {
             <p className="brand-name">電腦應用與 AI 工具班</p>
           </div>
         </div>
-        <div className="topbar-note"><Sparkles size={15} /> 課表瀏覽器</div>
+        <nav className="topbar-nav" aria-label="主要導覽">
+          <Link href="/courses" className="topbar-link"><BookOpen size={15} /> 課程專頁</Link>
+          <Link href="/lecturers" className="topbar-link"><UserRound size={15} /> 講師專頁</Link>
+          <span className="topbar-note"><Sparkles size={15} /> 課表瀏覽器</span>
+        </nav>
       </header>
 
       <section className="intro-wrap">
