@@ -8,6 +8,7 @@ import CourseDetail from "./pages/CourseDetail";
 import Directories from "./pages/Directories";
 import Home from "./pages/Home";
 import LecturerDetail from "./pages/LecturerDetail";
+import PasswordGate from "./components/PasswordGate";
 
 function Router() {
   return (
@@ -29,7 +30,7 @@ export default function App() {
       <ThemeProvider defaultTheme="light">
         <TooltipProvider>
           <Toaster />
-          <Router />
+          <PasswordGate><Router /></PasswordGate>
         </TooltipProvider>
       </ThemeProvider>
     </ErrorBoundary>
