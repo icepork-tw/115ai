@@ -152,7 +152,7 @@ export default function Home() {
         <nav className="topbar-nav" aria-label="主要導覽">
           <Link href="/courses" className="topbar-link"><BookOpen size={15} /> 課程專頁</Link>
           <Link href="/lecturers" className="topbar-link"><UserRound size={15} /> 講師專頁</Link>
-          <span className="topbar-note"><Sparkles size={15} /> 課表瀏覽器</span>
+          <span className="topbar-note"><Sparkles size={15} /> 課表</span>
         </nav>
       </header>
 
