@@ -317,3 +317,9 @@ button:focus-visible { outline: 3px solid rgba(232,123,75,.42); outline-offset: 
 .today-label { position: absolute; right: 8px; bottom: 10px; color: var(--orange-dark); font-size: 9px; font-weight: 700; }
 .calendar-day.selected .today-label { color: #f4b18f; }
 @media (max-width: 620px) { .month-controls { flex-wrap: wrap; justify-content: flex-end; } .today-button { flex-basis: 100%; margin-top: 3px; padding: 6px 10px; } .today-label { right: 6px; bottom: 7px; font-size: 8px; } }
+
+.calendar-day.holiday:not(.selected) { background: rgba(232,123,75,.07); }
+.holiday-label { position: absolute; left: 8px; bottom: 9px; color: var(--orange-dark); font-size: 8px; font-weight: 700; white-space: nowrap; }
+.calendar-day.selected .holiday-label { color: #f4b18f; }
+.holiday-dot { background: var(--orange-dark); }
+@media (max-width: 620px) { .holiday-label { left: 5px; bottom: 6px; font-size: 7px; transform: scale(.92); transform-origin: left bottom; } }

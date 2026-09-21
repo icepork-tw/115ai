@@ -18,6 +18,15 @@ type CalendarCell = { date: Date; key: string; inMonth: boolean };
 const WEEKDAYS = ["一", "二", "三", "四", "五", "六", "日"];
 const FIRST_DATE = schedule[0].date;
 const LAST_DATE = schedule[schedule.length - 1].date;
+const HOLIDAYS: Record<string, string> = {
+  "2026-09-25": "中秋節",
+  "2026-09-28": "教師節",
+  "2026-10-09": "國慶補假",
+  "2026-10-10": "國慶日",
+  "2026-10-25": "光復節",
+  "2026-10-26": "光復補假",
+  "2026-12-25": "行憲紀念日",
+};
 
 function parseDate(value: string) {
   const [year, month, day] = value.split("-").map(Number);
@@ -143,19 +152,6 @@ export default function Home() {
         </nav>
       </header>
 
-      <section className="intro-wrap">
-        <div className="intro-copy">
-          <p className="eyebrow"><span /> 115 年 09 月 14 日 — 12 月 10 日</p>
-          <h1>今天，<em>上什麼課？</em></h1>
-          <p className="intro-text">不用查詢，直接點選日期或課程。<br />把這份課表當成每天的學習路線圖。</p>
-        </div>
-        <div className="intro-stamp">
-          <span>已依 PDF 核對</span>
-          <strong>學員版</strong>
-          <small>講師資訊已整理</small>
-        </div>
-      </section>
-
       <section className="home-direct-links" aria-label="專頁入口">
         <Link href="/courses" className="home-direct-card course-entry">
           <div className="direct-card-icon"><BookOpen size={26} /></div>
@@ -186,17 +182,19 @@ export default function Home() {
               const day = byDate.get(cell.key);
               const selected = selectedDate === cell.key;
               const isToday = todayKey === cell.key;
+              const holiday = HOLIDAYS[cell.key];
               return (
-                <button key={cell.key} className={`calendar-day ${!cell.inMonth ? "muted" : ""} ${day ? "has-class highlighted" : ""} ${isToday ? "today" : ""} ${selected ? "selected" : ""}`} disabled={!day} onClick={() => day && chooseDate(cell.key)}>
+                <button key={cell.key} title={holiday} className={`calendar-day ${!cell.inMonth ? "muted" : ""} ${day ? "has-class highlighted" : ""} ${holiday ? "holiday" : ""} ${isToday ? "today" : ""} ${selected ? "selected" : ""}`} disabled={!day} onClick={() => day && chooseDate(cell.key)}>
                   <span className="day-number">{cell.date.getDate()}</span>
                   {day && <span className="day-dots"><i /><i /></span>}
                   {day && <span className="day-caption">課</span>}
+                  {holiday && <span className="holiday-label">{holiday}</span>}
                   {isToday && <span className="today-label">今天</span>}
                 </button>
               );
             })}
           </div>
-          <div className="calendar-legend"><span><i className="legend-dot accent" /> 有課程</span><span><i className="legend-dot selected-dot" /> 目前日期</span><span className="legend-note">點擊日期查看課程</span></div>
+          <div className="calendar-legend"><span><i className="legend-dot accent" /> 有課程</span><span><i className="legend-dot holiday-dot" /> 國定假日</span><span><i className="legend-dot selected-dot" /> 目前日期</span><span className="legend-note">點擊日期查看課程</span></div>
         </div>
 
         <aside className="day-panel panel-card">
