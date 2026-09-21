@@ -323,3 +323,5 @@ button:focus-visible { outline: 3px solid rgba(232,123,75,.42); outline-offset: 
 .calendar-day.selected .holiday-label { color: #f4b18f; }
 .holiday-dot { background: var(--orange-dark); }
 @media (max-width: 620px) { .holiday-label { left: 5px; bottom: 6px; font-size: 7px; transform: scale(.92); transform-origin: left bottom; } }
+
+@media (max-width: 620px) { .home-shell .topbar-note { display: flex; align-items: center; gap: 4px; font-size: 9px; letter-spacing: .02em; white-space: nowrap; } .home-shell .topbar-nav { gap: 8px; } }
