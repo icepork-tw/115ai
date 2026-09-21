@@ -2,7 +2,7 @@ import { ArrowLeft, BookOpen, CalendarDays, Clock3, GraduationCap, UsersRound } 
 import { Link, useRoute } from "wouter";
 import { schedule, type Session } from "@/data/schedule";
 
-function expand(session: Session) { const courses = session.course.split("、").map((x) => x.trim()).filter(Boolean); const hours = session.hours.split("、").map((x) => x.trim()).filter(Boolean); return courses.map((course, i) => ({ course, hours: hours[i] ?? hours[0] ?? "0", teacher: session.teacher, assistant: session.assistant })); }
+function expand(session: Session) { const courses = session.course === "電腦軟體、硬體架構" ? [session.course] : session.course.split("、").map((x) => x.trim()).filter(Boolean); const hours = session.hours.split("、").map((x) => x.trim()).filter(Boolean); return courses.map((course, i) => ({ course, hours: hours[i] ?? hours[0] ?? "0", teacher: session.teacher, assistant: session.assistant })); }
 function formatDate(value: string) { const [year, month, day] = value.split("-"); return `${year}/${month}/${day}`; }
 
 export default function LecturerDetail() {

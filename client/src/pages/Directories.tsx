@@ -3,7 +3,7 @@ import { Link, useRoute } from "wouter";
 import { courseNames, schedule, type Session } from "@/data/schedule";
 
 function expand(session: Session) {
-  const courses = session.course.split("、").map((x) => x.trim()).filter(Boolean);
+  const courses = session.course === "電腦軟體、硬體架構" ? [session.course] : session.course.split("、").map((x) => x.trim()).filter(Boolean);
   const hours = session.hours.split("、").map((x) => x.trim()).filter(Boolean);
   return courses.map((course, i) => ({ course, hours: Number.parseInt(hours[i] ?? hours[0] ?? "0", 10), teacher: session.teacher, assistant: session.assistant }));
 }

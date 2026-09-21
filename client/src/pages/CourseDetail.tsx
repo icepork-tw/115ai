@@ -3,7 +3,7 @@ import { ArrowLeft, ArrowRight, BookOpen, CalendarDays, ChevronRight, Clock3, Gr
 import { courseNames, schedule, type ScheduleDay, type Session } from "@/data/schedule";
 
 function expandSession(session: Session) {
-  const courses = session.course.split("、").map((item) => item.trim()).filter(Boolean);
+  const courses = session.course === "電腦軟體、硬體架構" ? [session.course] : session.course.split("、").map((item) => item.trim()).filter(Boolean);
   const hours = session.hours.split("、").map((item) => item.trim()).filter(Boolean);
   return courses.map((course, index) => ({ course, hours: hours[index] ?? hours[0] ?? "", teacher: session.teacher, assistant: session.assistant }));
 }

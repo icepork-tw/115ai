@@ -39,7 +39,7 @@ function displayDate(value: string) {
 }
 
 function expandSession(session: Session) {
-  const courses = session.course.split("、").map((item) => item.trim()).filter(Boolean);
+  const courses = session.course === "電腦軟體、硬體架構" ? [session.course] : session.course.split("、").map((item) => item.trim()).filter(Boolean);
   const hours = session.hours.split("、").map((item) => item.trim()).filter(Boolean);
   return courses.map((course, index) => ({
     course,
