@@ -19,11 +19,15 @@ const WEEKDAYS = ["一", "二", "三", "四", "五", "六", "日"];
 const FIRST_DATE = schedule[0].date;
 const LAST_DATE = schedule[schedule.length - 1].date;
 const HOLIDAYS: Record<string, string> = {
-  "2026-09-25": "中秋節",
-  "2026-09-28": "教師節",
-  "2026-10-09": "國慶補假",
+  "2026-09-25": "中秋連假",
+  "2026-09-26": "中秋連假",
+  "2026-09-27": "中秋連假",
+  "2026-09-28": "教師節連假",
+  "2026-10-09": "國慶連假",
   "2026-10-10": "國慶日",
-  "2026-10-25": "光復節",
+  "2026-10-11": "國慶連假",
+  "2026-10-24": "光復連假",
+  "2026-10-25": "光復節連假",
   "2026-10-26": "光復補假",
   "2026-12-25": "行憲紀念日",
 };
@@ -194,7 +198,7 @@ export default function Home() {
               );
             })}
           </div>
-          <div className="calendar-legend"><span><i className="legend-dot accent" /> 有課程</span><span><i className="legend-dot holiday-dot" /> 國定假日</span><span><i className="legend-dot selected-dot" /> 目前日期</span><span className="legend-note">點擊日期查看課程</span></div>
+          <div className="calendar-legend"><span><i className="legend-dot accent" /> 有課程</span><span><i className="legend-dot holiday-dot" /> 假日／連假</span><span><i className="legend-dot selected-dot" /> 目前日期</span><span className="legend-note">點擊日期查看課程</span></div>
         </div>
 
         <aside className="day-panel panel-card">
