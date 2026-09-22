@@ -38,6 +38,13 @@ export default function PasswordGate({ children }: { children: ReactNode }) {
 
   return (
     <main className="access-gate">
+      <div className="access-wrap">
+        <div className="access-welcome" aria-label="課程歡迎訊息">
+          <div className="access-welcome-mark"><BookOpen size={28} /></div>
+          <p>歡迎來到</p>
+          <h1>電腦應用與 AI 工具班</h1>
+          <span>學員專屬課表</span>
+        </div>
       <div className="access-card">
         <div className="access-brand"><div className="brand-mark"><BookOpen size={20} /></div><span>電腦應用與 AI 工具班</span></div>
         <div className="access-icon"><LockKeyhole size={23} /></div>
@@ -51,6 +58,7 @@ export default function PasswordGate({ children }: { children: ReactNode }) {
         </form>
         {error && <p className="access-error" role="alert">密碼不正確，請再試一次。</p>}
         <p className="access-note">本裝置驗證成功後會記住查看權限。</p>
+      </div>
       </div>
     </main>
   );

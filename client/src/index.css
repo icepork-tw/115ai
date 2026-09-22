@@ -343,3 +343,11 @@ button:focus-visible { outline: 3px solid rgba(232,123,75,.42); outline-offset: 
 .access-error { margin: 14px 0 0; color: #b34d36; font-size: 12px; font-weight: 700; }
 .access-note { margin: 22px 0 0; color: var(--ink-soft); font-size: 10px; text-align: center; }
 @media (max-width: 620px) { .access-gate { padding: 16px; } .access-card { padding: 28px 22px 24px; } .access-card h1 { font-size: 25px; } }
+
+.access-wrap { width: min(100%, 430px); }
+.access-welcome { margin-bottom: 20px; text-align: center; color: var(--ink); }
+.access-welcome-mark { width: 64px; height: 64px; display: grid; place-items: center; margin: 0 auto 14px; border: 1px solid rgba(232,123,75,.38); border-radius: 50%; background: var(--ink); color: var(--cream); box-shadow: 0 0 0 7px rgba(232,123,75,.08); }
+.access-welcome p { margin: 0 0 4px; color: var(--orange-dark); font-size: 12px; font-weight: 800; letter-spacing: .16em; }
+.access-welcome h1 { margin: 0; font-size: clamp(22px, 5vw, 30px); font-weight: 900; letter-spacing: -.06em; }
+.access-welcome span { display: block; margin-top: 8px; color: var(--ink-soft); font-size: 11px; letter-spacing: .12em; }
+@media (max-width: 620px) { .access-welcome { margin-bottom: 16px; } .access-welcome-mark { width: 56px; height: 56px; margin-bottom: 11px; } .access-welcome h1 { font-size: 22px; } }
