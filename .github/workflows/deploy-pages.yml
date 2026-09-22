@@ -1,4 +1,5 @@
 name: Deploy to GitHub Pages
+# The workflow also runs on every main-branch push so Pages can be redeployed after settings changes.
 
 on:
   push:
