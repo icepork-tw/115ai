@@ -393,3 +393,52 @@ button:focus-visible { outline: 3px solid rgba(232,123,75,.42); outline-offset: 
   .page-navigation .topbar-link.active { background: var(--ink); border-color: var(--ink); color: var(--cream); }
   .page-navigation .topbar-link svg { width: 14px; height: 14px; }
 }
+
+/* Fine mobile layout pass: prioritize tap targets, readable wrapping, and narrow 320px screens. */
+@media (max-width: 620px) {
+  .site-shell { padding-left: 12px; padding-right: 12px; }
+  .detail-shell .brand-lockup, .directory-shell .brand-lockup { gap: 9px; min-width: 0; }
+  .detail-shell .brand-mark, .directory-shell .brand-mark { width: 36px; height: 36px; flex: 0 0 auto; }
+  .detail-shell .brand-kicker, .directory-shell .brand-kicker { font-size: 8px; }
+  .detail-shell .brand-name, .directory-shell .brand-name { font-size: 12px; letter-spacing: .04em; white-space: nowrap; }
+  .calendar-panel .panel-topline { align-items: stretch; flex-direction: column; gap: 11px; }
+  .calendar-panel .month-controls { width: 100%; justify-content: space-between; }
+  .calendar-panel .today-button { flex-basis: auto; margin-top: 0; }
+  .calendar-day { min-height: 62px; padding: 8px 5px; }
+  .calendar-day .day-number { font-size: 12px; }
+  .calendar-day .day-dots { top: 10px; right: 5px; }
+  .calendar-day .day-caption { margin-top: 17px; font-size: 8px; }
+  .calendar-day .holiday-label { left: 4px; bottom: 5px; max-width: calc(100% - 7px); overflow: hidden; text-overflow: ellipsis; }
+  .calendar-day .today-label { right: 4px; bottom: 6px; font-size: 7px; }
+  .calendar-legend { align-items: flex-start; gap: 7px 12px; font-size: 9px; }
+  .calendar-legend span { min-height: 18px; }
+  .day-panel-header { flex-direction: column; align-items: stretch; gap: 4px; }
+  .day-panel-header h2 { max-width: none; font-size: 22px; }
+  .date-index { align-self: flex-end; margin-top: -8px; font-size: 21px; }
+  .period-card { padding: 12px 11px; }
+  .period-meta { align-items: flex-start; gap: 8px; }
+  .period-time { text-align: right; }
+  .session-row { align-items: flex-start; gap: 7px; }
+  .session-row > div:first-child { min-width: 0; }
+  .course-title-link { font-size: 14px; overflow-wrap: anywhere; }
+  .session-status { flex-direction: column; align-items: flex-end; gap: 4px; }
+  .hours-pill { padding: 4px 6px; }
+  .detail-hero h1 { overflow-wrap: anywhere; }
+  .detail-lede { font-size: 12px; line-height: 1.75; }
+  .detail-stats { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .stat-card { min-height: 92px; padding: 11px; }
+  .stat-card span { font-size: 10px; }
+  .course-row { padding: 15px 0; }
+  .row-date strong { font-size: 12px; }
+  .row-time, .row-staff { font-size: 10px; }
+}
+@media (max-width: 380px) {
+  .page-navigation .topbar-link { padding-left: 3px; padding-right: 3px; font-size: 9px; gap: 4px; }
+  .page-navigation .topbar-link svg { width: 13px; height: 13px; }
+  .calendar-panel, .day-panel { padding-left: 11px; padding-right: 11px; }
+  .calendar-day { min-height: 57px; padding-left: 4px; padding-right: 4px; }
+  .calendar-day .day-caption { font-size: 7px; }
+  .completed-summary-heading h3 { font-size: 14px; }
+  .completed-stat strong { font-size: 17px; }
+  .completed-stat small { font-size: 7px; }
+}
