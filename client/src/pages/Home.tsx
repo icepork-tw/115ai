@@ -255,7 +255,6 @@ export default function Home() {
         </aside>
       </section>
 
-      <footer className="footer-note"><span>115 · 學習路線</span><span>資料依 PDF 課表整理 · 僅顯示講師資訊</span><span>點日期，開始今天的課</span></footer>
     </main>
   );
 }

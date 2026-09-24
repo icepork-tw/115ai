@@ -102,7 +102,7 @@ export default function CourseDetail() {
           <h2>授課團隊</h2>
           <div className="people-block"><span className="people-label">講師</span>{teachers.map((person) => <div className="person-name" key={person}><GraduationCap size={16} />{person}</div>)}</div>
           <div className="people-block"><span className="people-label">助教</span>{assistants.map((person) => <div className="person-name" key={person}><UsersRound size={16} />{person}</div>)}</div>
-          <div className="detail-note">資料以 PDF 課表為準<br />時間與節數已依分段課程整理</div>
+
         </aside>
       </section>
 
@@ -115,7 +115,6 @@ export default function CourseDetail() {
         <div className="course-directory-heading"><div><span className="section-overline">瀏覽其他課程</span><h2>課程導覽</h2></div><p>選擇其他課程，直接查看完整上課資訊。</p></div>
         <div className="course-directory-grid">{courseNames.map((name, index) => { const summary = courseSummary(name); const isCurrent = name === course; return <Link key={name} href={`/course/${encodeURIComponent(name)}`} className={`course-directory-card ${isCurrent ? "current" : ""}`}><div className="directory-number">{String(index + 1).padStart(2, "0")}</div><div className="course-directory-copy"><div className="course-card-title"><h3>{name}</h3>{isCurrent && <span className="current-badge">目前瀏覽中</span>}</div><div className="directory-meta"><span><CalendarDays size={13} /> {summary.sessions} 次上課</span><span><span className="meta-dot" /> {summary.hours} 節</span></div></div><ChevronRight size={17} className="directory-arrow" /></Link>; })}</div>
       </section>
-      <footer className="footer-note"><span>115 · 學習路線</span><span>資料依 PDF 課表整理 · 僅顯示講師與助教資訊</span><span>一門課，一條學習路線</span></footer>
     </main>
   );
 }
