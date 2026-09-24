@@ -10,7 +10,7 @@ function expand(session: Session) {
 }
 
 function PageHeader({ eyebrow, title, description }: { eyebrow: string; title: string; description: string }) {
-  return <section className="directory-hero"><Link href="/" className="back-link"><ChevronRight size={16} style={{ transform: "rotate(180deg)" }} /> 回到首頁</Link><p className="eyebrow"><span /> {eyebrow}</p><h1>{title}</h1><p className="detail-lede">{description}</p></section>;
+  return <section className="directory-hero"><p className="eyebrow"><span /> {eyebrow}</p><h1>{title}</h1><p className="detail-lede">{description}</p></section>;
 }
 
 export default function Directories() {

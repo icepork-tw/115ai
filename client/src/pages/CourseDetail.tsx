@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Link, useLocation, useRoute } from "wouter";
+import { Link, useRoute } from "wouter";
 import { ArrowLeft, ArrowRight, BookOpen, CalendarDays, ChevronDown, ChevronRight, ChevronUp, Clock3, GraduationCap, UsersRound } from "lucide-react";
 import { courseNames, schedule, type ScheduleDay, type Session } from "@/data/schedule";
 import SiteNav from "@/components/SiteNav";
@@ -34,7 +34,6 @@ function getTodayKey() {
 }
 
 export default function CourseDetail() {
-  const [, setLocation] = useLocation();
   const [, params] = useRoute("/course/:course");
   const course = params?.course ? decodeURIComponent(params.course) : courseNames[0];
   const rows = schedule.flatMap((day) => [
@@ -67,7 +66,6 @@ export default function CourseDetail() {
       <SiteNav current="course-detail" />
 
       <section className="detail-hero">
-        <button className="back-link" onClick={() => setLocation("/")}><ArrowLeft size={16} /> 回到首頁</button>
         <p className="eyebrow"><span /> 課程資料</p>
         <h1>{course}</h1>
         <p className="detail-lede">這門課的完整上課清單。按日期排列，講師與助教資訊一目了然。</p>
