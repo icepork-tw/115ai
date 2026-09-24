@@ -65,6 +65,39 @@ function sessionFor(day: ScheduleDay, period: "am" | "pm") {
   return expandSession(day[period]);
 }
 
+function CompletedSummary({ days }: { days: ScheduleDay[] }) {
+  const sessions = days.flatMap((day) => [...sessionFor(day, "am"), ...sessionFor(day, "pm")]);
+  const totalHours = sessions.reduce((total, session) => total + (Number(session.hours) || 0), 0);
+  const courses = new Set(sessions.map((session) => session.course));
+  const teachers = new Set(sessions.map((session) => session.teacher).filter(Boolean));
+
+  const items = [
+    { label: "已完成上課日", value: `${days.length}`, suffix: "日", icon: CalendarDays },
+    { label: "完成課程數", value: `${sessions.length}`, suffix: "堂", icon: BookOpen },
+    { label: "累計課表時數", value: `${totalHours}`, suffix: "小時", icon: Clock3 },
+    { label: "涉及講師", value: `${teachers.size}`, suffix: "位", icon: UserRound },
+  ];
+
+  return (
+    <section className="completed-summary" aria-label="已完成課程統計">
+      <div className="completed-summary-heading">
+        <div><span className="section-overline">學習進度</span><h3>已完成課程統計</h3></div>
+        <span className="completed-course-count">共 {courses.size} 門不同課程</span>
+      </div>
+      <div className="completed-stat-grid">
+        {items.map(({ label, value, suffix, icon: Icon }) => (
+          <div className="completed-stat" key={label}>
+            <Icon size={16} />
+            <div><strong>{value}</strong><span>{suffix}</span></div>
+            <small>{label}</small>
+          </div>
+        ))}
+      </div>
+      <p className="completed-summary-note">統計範圍截至今天，時數依 PDF 課表中的節數彙整。</p>
+    </section>
+  );
+}
+
 function buildCalendar(month: Date): CalendarCell[] {
   const first = new Date(month.getFullYear(), month.getMonth(), 1);
   const mondayOffset = (first.getDay() + 6) % 7;
@@ -121,6 +154,7 @@ export default function Home() {
   const todayKey = keyForDate(new Date());
   const todaySchedule = byDate.get(todayKey);
   const selectedIsPast = selectedDate < todayKey;
+  const completedDays = useMemo(() => schedule.filter((day) => day.date < todayKey), [todayKey]);
 
   const chooseDate = (date: string) => {
     setSelectedDate(date);
@@ -210,7 +244,10 @@ export default function Home() {
             <div><span className="section-overline">{selectedIsPast ? "已完成課程" : "當日課程"}</span><h2>{selectedDay ? displayDate(selectedDay.date) : "選擇上課日"}</h2>{selectedDay && <p className="weekday-line">星期{selectedDay.weekday} · {selectedIsPast ? "已完成，可回顧課程" : "今日課程"}</p>}</div>
             {selectedDay && <div className="date-index">{String(activeIndex + 1).padStart(2, "0")}<small>/ {schedule.length}</small></div>}
           </div>
-          {selectedDay ? <DaySchedule day={selectedDay} isPast={selectedIsPast} /> : <div className="empty-day"><CalendarDays size={28} /><p>點選月曆中的上課日</p></div>}
+          {selectedDay ? <>
+            {selectedIsPast && <CompletedSummary days={completedDays} />}
+            <DaySchedule day={selectedDay} isPast={selectedIsPast} />
+          </> : <div className="empty-day"><CalendarDays size={28} /><p>點選月曆中的上課日</p></div>}
           <div className="day-navigation">
             <button onClick={() => moveDate(-1)} disabled={activeIndex <= 0}><ArrowLeft size={16} /> 上一天</button>
             <button onClick={() => moveDate(1)} disabled={activeIndex === schedule.length - 1}>下一天 <ArrowRight size={16} /></button>

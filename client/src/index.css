@@ -366,3 +366,17 @@ button:focus-visible { outline: 3px solid rgba(232,123,75,.42); outline-offset: 
 .session-status { display: flex; align-items: center; gap: 7px; flex: 0 0 auto; }
 .completed-badge { border: 1px solid rgba(100,118,112,.35); border-radius: 999px; padding: 3px 7px; color: #71807a; background: rgba(113,128,122,.08); font-size: 8px; font-weight: 700; white-space: nowrap; }
 @media (max-width: 620px) { .completed-badge { padding: 3px 5px; font-size: 7px; } .session-status { gap: 4px; } }
+
+.completed-summary { margin: 18px 0 4px; padding: 15px 16px 13px; border: 1px solid rgba(110,124,120,.28); background: rgba(113,128,122,.055); }
+.completed-summary-heading { display: flex; align-items: flex-end; justify-content: space-between; gap: 10px; margin-bottom: 12px; }
+.completed-summary-heading h3 { margin: 4px 0 0; color: var(--ink); font-size: 15px; letter-spacing: -.03em; }
+.completed-course-count { color: #71807a; font-size: 9px; white-space: nowrap; }
+.completed-stat-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 7px; }
+.completed-stat { min-width: 0; padding: 10px 9px 8px; border: 1px solid rgba(110,124,120,.19); background: rgba(251,250,246,.72); color: #71807a; }
+.completed-stat > svg { margin-bottom: 7px; }
+.completed-stat > div { display: flex; align-items: baseline; gap: 3px; color: var(--ink); }
+.completed-stat strong { font-size: 20px; line-height: 1; letter-spacing: -.045em; }
+.completed-stat div span { font-size: 9px; color: #71807a; }
+.completed-stat small { display: block; margin-top: 5px; color: #8b9691; font-size: 8px; line-height: 1.35; white-space: nowrap; }
+.completed-summary-note { margin: 10px 0 0; color: #8b9691; font-size: 9px; line-height: 1.5; }
+@media (max-width: 620px) { .completed-summary { margin-top: 15px; padding: 13px 12px 11px; } .completed-summary-heading { align-items: flex-start; flex-direction: column; gap: 3px; } .completed-stat-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 6px; } .completed-stat { padding: 9px 8px 7px; } .completed-stat strong { font-size: 18px; } }
