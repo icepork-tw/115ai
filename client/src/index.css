@@ -474,3 +474,16 @@ button:focus-visible { outline: 3px solid rgba(232,123,75,.42); outline-offset: 
   .course-list .course-row { grid-template-columns: 28px minmax(0, 1fr); gap: 4px 7px; padding: 11px 0; }
   .course-list .row-staff { grid-template-columns: 1fr; gap: 3px; }
 }
+
+/* Final mobile alignment for course metadata. */
+@media (max-width: 620px) {
+  .course-list .row-time { display: grid; grid-template-columns: 14px minmax(0, 1fr) auto; align-items: center; column-gap: 5px; width: 100%; }
+  .course-list .row-time svg { grid-column: 1; }
+  .course-list .row-time small { grid-column: 3; justify-self: end; margin: 0; white-space: nowrap; }
+  .course-list .row-staff { width: 100%; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); align-items: center; column-gap: 12px; }
+  .course-list .row-staff span { width: 100%; }
+  .course-list .row-staff span:nth-child(2) { justify-self: end; }
+}
+@media (max-width: 380px) {
+  .course-list .row-staff { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); column-gap: 6px; font-size: 9px; }
+}
