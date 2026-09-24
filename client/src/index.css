@@ -456,3 +456,21 @@ button:focus-visible { outline: 3px solid rgba(232,123,75,.42); outline-offset: 
 @media (max-width: 620px) {
   .completed-toggle { width: 100%; justify-content: center; margin: 14px 0 1px; min-height: 40px; }
 }
+
+/* Compact mobile course rows: show more sessions without sacrificing readability. */
+@media (max-width: 620px) {
+  .course-list .list-heading { padding-bottom: 16px; }
+  .course-list .course-row { grid-template-columns: 32px minmax(0, 1fr); gap: 5px 9px; padding: 13px 0; }
+  .course-list .row-date { gap: 2px; }
+  .course-list .row-date strong { font-size: 12px; }
+  .course-list .row-date span { font-size: 10px; }
+  .course-list .row-time { align-items: center; flex-wrap: nowrap; gap: 5px; font-size: 10px; }
+  .course-list .row-time small { flex-basis: auto; margin-left: auto; font-size: 9px; }
+  .course-list .row-staff { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 4px 8px; margin-top: 0; font-size: 10px; }
+  .course-list .row-staff span { min-width: 0; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .course-list .row-staff svg { flex: 0 0 auto; width: 13px; height: 13px; }
+}
+@media (max-width: 380px) {
+  .course-list .course-row { grid-template-columns: 28px minmax(0, 1fr); gap: 4px 7px; padding: 11px 0; }
+  .course-list .row-staff { grid-template-columns: 1fr; gap: 3px; }
+}
