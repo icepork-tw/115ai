@@ -76,7 +76,7 @@ function buildCalendar(month: Date): CalendarCell[] {
   });
 }
 
-function DaySchedule({ day }: { day: ScheduleDay }) {
+function DaySchedule({ day, isPast }: { day: ScheduleDay; isPast: boolean }) {
   const sessions = [
     { key: "am", label: "上午", time: "08:50 — 11:50", data: sessionFor(day, "am") },
     { key: "pm", label: "下午", time: "12:50 — 15:50", data: sessionFor(day, "pm") },
@@ -92,12 +92,15 @@ function DaySchedule({ day }: { day: ScheduleDay }) {
           </div>
           <div className="space-y-3">
             {period.data.map((session, index) => (
-              <div key={`${session.course}-${index}`} className="session-row">
+              <div key={`${session.course}-${index}`} className={`session-row ${isPast ? "completed-session" : ""}`}>
                 <div>
                   <Link href={`/course/${encodeURIComponent(session.course)}`} className="course-title-link">{session.course}</Link>
                   <div className="session-teacher"><UserRound size={14} /> {session.teacher || "未標示講師"}</div>
                 </div>
-                <span className="hours-pill">{session.hours} 節</span>
+                <div className="session-status">
+                  {isPast && <span className="completed-badge">已完成</span>}
+                  <span className="hours-pill">{session.hours} 節</span>
+                </div>
               </div>
             ))}
           </div>
@@ -117,6 +120,7 @@ export default function Home() {
   const activeIndex = schedule.findIndex((day) => day.date === selectedDate);
   const todayKey = keyForDate(new Date());
   const todaySchedule = byDate.get(todayKey);
+  const selectedIsPast = selectedDate < todayKey;
 
   const chooseDate = (date: string) => {
     setSelectedDate(date);
@@ -188,7 +192,7 @@ export default function Home() {
               const isToday = todayKey === cell.key;
               const holiday = HOLIDAYS[cell.key];
               return (
-                <button key={cell.key} title={holiday} className={`calendar-day ${!cell.inMonth ? "muted" : ""} ${day ? "has-class highlighted" : ""} ${holiday ? "holiday" : ""} ${isToday ? "today" : ""} ${selected ? "selected" : ""}`} disabled={!day} onClick={() => day && chooseDate(cell.key)}>
+                  <button key={cell.key} title={holiday} className={`calendar-day ${!cell.inMonth ? "muted" : ""} ${day ? "has-class highlighted" : ""} ${day && cell.key < todayKey ? "past" : ""} ${holiday ? "holiday" : ""} ${isToday ? "today" : ""} ${selected ? "selected" : ""}`} disabled={!day} onClick={() => day && chooseDate(cell.key)}>
                   <span className="day-number">{cell.date.getDate()}</span>
                   {day && <span className="day-dots"><i /><i /></span>}
                   {day && <span className="day-caption">課</span>}
@@ -203,10 +207,10 @@ export default function Home() {
 
         <aside className="day-panel panel-card">
           <div className="day-panel-header">
-            <div><span className="section-overline">當日課程</span><h2>{selectedDay ? displayDate(selectedDay.date) : "選擇上課日"}</h2>{selectedDay && <p className="weekday-line">星期{selectedDay.weekday} · 今日課程</p>}</div>
+            <div><span className="section-overline">{selectedIsPast ? "已完成課程" : "當日課程"}</span><h2>{selectedDay ? displayDate(selectedDay.date) : "選擇上課日"}</h2>{selectedDay && <p className="weekday-line">星期{selectedDay.weekday} · {selectedIsPast ? "已完成，可回顧課程" : "今日課程"}</p>}</div>
             {selectedDay && <div className="date-index">{String(activeIndex + 1).padStart(2, "0")}<small>/ {schedule.length}</small></div>}
           </div>
-          {selectedDay ? <DaySchedule day={selectedDay} /> : <div className="empty-day"><CalendarDays size={28} /><p>點選月曆中的上課日</p></div>}
+          {selectedDay ? <DaySchedule day={selectedDay} isPast={selectedIsPast} /> : <div className="empty-day"><CalendarDays size={28} /><p>點選月曆中的上課日</p></div>}
           <div className="day-navigation">
             <button onClick={() => moveDate(-1)} disabled={activeIndex <= 0}><ArrowLeft size={16} /> 上一天</button>
             <button onClick={() => moveDate(1)} disabled={activeIndex === schedule.length - 1}>下一天 <ArrowRight size={16} /></button>
