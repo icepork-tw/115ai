@@ -71,7 +71,6 @@ export default function CourseDetail() {
       <section className="detail-hero">
         <p className="eyebrow"><span /> 課程資料</p>
         <h1>{course}</h1>
-        <p className="detail-lede">這門課的完整上課清單。按日期排列，講師與助教資訊一目了然。</p>
       </section>
 
       <section className="detail-stats">
@@ -112,7 +111,7 @@ export default function CourseDetail() {
           <Link href="/courses" className="course-index-button"><BookOpen size={16} /><span>課程索引</span><small>{currentIndex + 1} / {courseNames.length}</small></Link>
           {nextCourse ? <Link href={`/course/${encodeURIComponent(nextCourse)}`} className="course-nav-button next"><span><small>下一門課程</small><strong>{nextCourse}</strong></span><ArrowRight size={17} /></Link> : <span />}
         </div>
-        <div className="course-directory-heading"><div><span className="section-overline">瀏覽其他課程</span><h2>課程導覽</h2></div><p>選擇其他課程，直接查看完整上課資訊。</p></div>
+        <div className="course-directory-heading"><div><span className="section-overline">瀏覽其他課程</span><h2>課程導覽</h2></div></div>
         <div className="course-directory-grid">{courseNames.map((name, index) => { const summary = courseSummary(name); const isCurrent = name === course; return <Link key={name} href={`/course/${encodeURIComponent(name)}`} className={`course-directory-card ${isCurrent ? "current" : ""}`}><div className="directory-number">{String(index + 1).padStart(2, "0")}</div><div className="course-directory-copy"><div className="course-card-title"><h3>{name}</h3>{isCurrent && <span className="current-badge">目前瀏覽中</span>}</div><div className="directory-meta"><span><CalendarDays size={13} /> {summary.sessions} 次上課</span><span><span className="meta-dot" /> {summary.hours} 節</span></div></div><ChevronRight size={17} className="directory-arrow" /></Link>; })}</div>
       </section>
     </main>
