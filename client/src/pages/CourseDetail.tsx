@@ -1,6 +1,7 @@
 import { Link, useLocation, useRoute } from "wouter";
 import { ArrowLeft, ArrowRight, BookOpen, CalendarDays, ChevronRight, Clock3, GraduationCap, UsersRound } from "lucide-react";
 import { courseNames, schedule, type ScheduleDay, type Session } from "@/data/schedule";
+import SiteNav from "@/components/SiteNav";
 
 function expandSession(session: Session) {
   const courses = session.course === "電腦軟體、硬體架構" ? [session.course] : session.course.split("、").map((item) => item.trim()).filter(Boolean);
@@ -49,13 +50,7 @@ export default function CourseDetail() {
   return (
     <main className="site-shell detail-shell">
       <div className="paper-glow" aria-hidden="true" />
-      <header className="topbar">
-        <Link href="/" className="brand-lockup detail-brand">
-          <div className="brand-mark"><BookOpen size={19} strokeWidth={2.2} /></div>
-          <div><p className="brand-kicker">學員版 · 第 01 期</p><p className="brand-name">電腦應用與 AI 工具班</p></div>
-        </Link>
-        <span className="topbar-note">課程專頁</span>
-      </header>
+      <SiteNav current="course-detail" />
 
       <section className="detail-hero">
         <button className="back-link" onClick={() => setLocation("/")}><ArrowLeft size={16} /> 回到月曆</button>
