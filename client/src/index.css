@@ -442,3 +442,14 @@ button:focus-visible { outline: 3px solid rgba(232,123,75,.42); outline-offset: 
   .completed-stat strong { font-size: 17px; }
   .completed-stat small { font-size: 7px; }
 }
+
+/* Course detail completed-session disclosure. */
+.completed-toggle { display: inline-flex; align-items: center; gap: 6px; margin: 16px 0 2px; padding: 8px 11px; border: 1px solid rgba(110,124,120,.35); border-radius: 999px; background: rgba(113,128,122,.07); color: #65756f; font-size: 11px; font-weight: 700; cursor: pointer; transition: background .16s ease, border-color .16s ease, color .16s ease; }
+.completed-toggle:hover { border-color: var(--orange); background: rgba(232,123,75,.08); color: var(--orange-dark); }
+.completed-toggle span { display: inline-flex; }
+.completed-row { color: #7f8d87; }
+.completed-row .row-index, .completed-row .row-date strong { color: #83918b; }
+.completed-row .row-time, .completed-row .row-staff, .completed-row .row-date span { color: #9aa59f; }
+@media (max-width: 620px) {
+  .completed-toggle { width: 100%; justify-content: center; margin: 14px 0 1px; min-height: 40px; }
+}

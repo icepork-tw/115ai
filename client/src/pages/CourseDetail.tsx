@@ -1,5 +1,6 @@
+import { useState } from "react";
 import { Link, useLocation, useRoute } from "wouter";
-import { ArrowLeft, ArrowRight, BookOpen, CalendarDays, ChevronRight, Clock3, GraduationCap, UsersRound } from "lucide-react";
+import { ArrowLeft, ArrowRight, BookOpen, CalendarDays, ChevronDown, ChevronRight, ChevronUp, Clock3, GraduationCap, UsersRound } from "lucide-react";
 import { courseNames, schedule, type ScheduleDay, type Session } from "@/data/schedule";
 import SiteNav from "@/components/SiteNav";
 
@@ -25,6 +26,13 @@ function formatDate(value: string) {
   return `${year}/${month}/${day}`;
 }
 
+function getTodayKey() {
+  const today = new Date();
+  const month = String(today.getMonth() + 1).padStart(2, "0");
+  const day = String(today.getDate()).padStart(2, "0");
+  return `${today.getFullYear()}-${month}-${day}`;
+}
+
 export default function CourseDetail() {
   const [, setLocation] = useLocation();
   const [, params] = useRoute("/course/:course");
@@ -33,6 +41,12 @@ export default function CourseDetail() {
     ...sessionsForDay(day, "am", course).map((session) => ({ ...session, date: day.date, weekday: day.weekday })),
     ...sessionsForDay(day, "pm", course).map((session) => ({ ...session, date: day.date, weekday: day.weekday })),
   ]);
+  const todayKey = getTodayKey();
+  const completedRows = rows.filter((row) => row.date < todayKey);
+  const upcomingRows = rows.filter((row) => row.date >= todayKey);
+  const shouldCollapseCompleted = rows.length >= 4 && completedRows.length > 0 && upcomingRows.length > 0;
+  const [showCompleted, setShowCompleted] = useState(!shouldCollapseCompleted);
+  const displayedRows = shouldCollapseCompleted && !showCompleted ? upcomingRows : rows;
   const totalHours = rows.reduce((sum, row) => sum + Number.parseInt(row.hours || "0", 10), 0);
   const teachers = Array.from(new Set(rows.map((row) => row.teacher).filter(Boolean)));
   const assistants = Array.from(new Set(rows.map((row) => row.assistant).filter(Boolean)));
@@ -53,7 +67,7 @@ export default function CourseDetail() {
       <SiteNav current="course-detail" />
 
       <section className="detail-hero">
-        <button className="back-link" onClick={() => setLocation("/")}><ArrowLeft size={16} /> 回到月曆</button>
+        <button className="back-link" onClick={() => setLocation("/")}><ArrowLeft size={16} /> 回到首頁</button>
         <p className="eyebrow"><span /> 課程資料</p>
         <h1>{course}</h1>
         <p className="detail-lede">這門課的完整上課清單。按日期排列，講師與助教資訊一目了然。</p>
@@ -69,15 +83,17 @@ export default function CourseDetail() {
       <section className="detail-layout">
         <div className="course-list panel-card">
           <div className="list-heading"><div><span className="section-overline">上課安排</span><h2>上課日期與時間</h2></div><span className="course-count">共 {rows.length} 筆</span></div>
+          {shouldCollapseCompleted && <button className="completed-toggle" type="button" onClick={() => setShowCompleted((visible) => !visible)} aria-expanded={showCompleted}><span>{showCompleted ? <ChevronUp size={15} /> : <ChevronDown size={15} />}</span>{showCompleted ? "收起已完成課程" : `顯示已完成課程（${completedRows.length} 堂）`}</button>}
           <div className="schedule-list">
-            {rows.map((row, index) => (
-              <div className="course-row" key={`${row.date}-${row.period}-${index}`}>
+            {displayedRows.map((row) => {
+              const index = rows.indexOf(row);
+              return <div className={`course-row ${row.date < todayKey ? "completed-row" : ""}`} key={`${row.date}-${row.period}-${index}`}>
                 <div className="row-index">{String(index + 1).padStart(2, "0")}</div>
                 <div className="row-date"><strong>{formatDate(row.date)}</strong><span>星期{row.weekday} · {row.period}</span></div>
                 <div className="row-time"><Clock3 size={14} /> {row.time}<small>{row.hours} 節</small></div>
                 <div className="row-staff"><span><GraduationCap size={14} /> {row.teacher || "未標示講師"}</span><span><UsersRound size={14} /> {row.assistant || "未標示助教"}</span></div>
-              </div>
-            ))}
+              </div>;
+            })}
           </div>
         </div>
         <aside className="people-card panel-card">
