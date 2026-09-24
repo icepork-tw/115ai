@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Link, useRoute } from "wouter";
 import { ArrowLeft, ArrowRight, BookOpen, CalendarDays, ChevronDown, ChevronRight, ChevronUp, Clock3, GraduationCap, UsersRound } from "lucide-react";
 import { courseNames, schedule, type ScheduleDay, type Session } from "@/data/schedule";
@@ -45,6 +45,9 @@ export default function CourseDetail() {
   const upcomingRows = rows.filter((row) => row.date >= todayKey);
   const shouldCollapseCompleted = rows.length >= 4 && completedRows.length > 0 && upcomingRows.length > 0;
   const [showCompleted, setShowCompleted] = useState(!shouldCollapseCompleted);
+  useEffect(() => {
+    setShowCompleted(!shouldCollapseCompleted);
+  }, [course, shouldCollapseCompleted]);
   const displayedRows = shouldCollapseCompleted && !showCompleted ? upcomingRows : rows;
   const totalHours = rows.reduce((sum, row) => sum + Number.parseInt(row.hours || "0", 10), 0);
   const teachers = Array.from(new Set(rows.map((row) => row.teacher).filter(Boolean)));
