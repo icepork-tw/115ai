@@ -93,7 +93,7 @@ function CompletedSummary({ days }: { days: ScheduleDay[] }) {
           </div>
         ))}
       </div>
-      <p className="completed-summary-note">統計範圍截至今天，時數依 PDF 課表中的節數彙整。</p>
+
     </section>
   );
 }
@@ -197,12 +197,12 @@ export default function Home() {
       <section className="home-direct-links" aria-label="專頁入口">
         <Link href="/courses" className="home-direct-card course-entry">
           <div className="direct-card-icon"><BookOpen size={26} /></div>
-          <div className="direct-card-copy"><span className="section-overline">依課程瀏覽</span><h2>課程專頁</h2><p>查看每門課的上課日期、時間、講師、助教與統計資訊。</p></div>
+          <div className="direct-card-copy"><span className="section-overline">依課程瀏覽</span><h2>課程專頁</h2></div>
           <ArrowRight className="direct-card-arrow" size={25} />
         </Link>
         <Link href="/lecturers" className="home-direct-card lecturer-entry">
           <div className="direct-card-icon"><UserRound size={26} /></div>
-          <div className="direct-card-copy"><span className="section-overline">依講師瀏覽</span><h2>講師專頁</h2><p>查看每位講師的授課日期、課程與時間清單。</p></div>
+          <div className="direct-card-copy"><span className="section-overline">依講師瀏覽</span><h2>講師專頁</h2></div>
           <ArrowRight className="direct-card-arrow" size={25} />
         </Link>
       </section>
@@ -236,7 +236,7 @@ export default function Home() {
               );
             })}
           </div>
-          <div className="calendar-legend"><span><i className="legend-dot accent" /> 有課程</span><span><i className="legend-dot holiday-dot" /> 假日／連假</span><span><i className="legend-dot selected-dot" /> 目前日期</span><span className="legend-note">點擊日期查看課程</span></div>
+          <div className="calendar-legend"><span><i className="legend-dot accent" /> 有課程</span><span><i className="legend-dot holiday-dot" /> 假日／連假</span><span><i className="legend-dot selected-dot" /> 目前日期</span></div>
         </div>
 
         <aside className="day-panel panel-card">

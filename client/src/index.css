@@ -88,7 +88,6 @@ button:focus-visible { outline: 3px solid rgba(232,123,75,.42); outline-offset: 
 .legend-dot { display: block; width: 7px; height: 7px; border-radius: 50%; }
 .legend-dot.accent { background: var(--orange); }
 .legend-dot.selected-dot { background: var(--ink); box-shadow: 0 0 0 2px var(--orange); }
-.legend-note { margin-left: auto; font-family: 'DM Mono', monospace; font-size: 9px; opacity: .7; }
 .day-panel { padding: 25px 27px 20px; display: flex; flex-direction: column; min-height: 490px; }
 .day-panel-header { padding-bottom: 25px; border-bottom: 1px solid var(--line); }
 .day-panel-header h2 { max-width: 300px; font-size: clamp(20px, 2.5vw, 27px); }
@@ -134,7 +133,6 @@ button:focus-visible { outline: 3px solid rgba(232,123,75,.42); outline-offset: 
   .day-dots { right: 7px; top: 11px; }
   .day-caption { margin-top: 15px; font-size: 9px; }
   .calendar-legend { gap: 10px; flex-wrap: wrap; }
-  .legend-note { margin-left: 0; flex-basis: 100%; }
   }
 
 /* Course detail page */
@@ -226,10 +224,9 @@ button:focus-visible { outline: 3px solid rgba(232,123,75,.42); outline-offset: 
 .lecturer-entry .direct-card-icon { color: #4e8488; border-color: rgba(109,159,162,.6); }
 .direct-card-copy { flex: 1; min-width: 0; }
 .direct-card-copy h2 { margin: 4px 0 7px; font-size: 25px; letter-spacing: -.055em; }
-.direct-card-copy p { margin: 0; color: var(--ink-soft); font-size: 11px; line-height: 1.7; }
 .direct-card-arrow { flex: 0 0 auto; color: var(--ink-soft); transition: transform .18s ease, color .18s ease; }
 .home-direct-card:hover .direct-card-arrow { color: var(--orange-dark); transform: translateX(5px); }
-@media (max-width: 620px) { .home-direct-links { grid-template-columns: 1fr; gap: 9px; margin-top: -8px; } .home-direct-card { min-height: 112px; padding: 17px; gap: 13px; } .direct-card-icon { width: 43px; height: 43px; } .direct-card-icon svg { width: 21px; height: 21px; } .direct-card-copy h2 { font-size: 20px; } .direct-card-copy p { font-size: 10px; } }
+@media (max-width: 620px) { .home-direct-links { grid-template-columns: 1fr; gap: 9px; margin-top: -8px; } .home-direct-card { min-height: 112px; padding: 17px; gap: 13px; } .direct-card-icon { width: 43px; height: 43px; } .direct-card-icon svg { width: 21px; height: 21px; } .direct-card-copy h2 { font-size: 20px; } }
 
 .course-navigation { max-width: 1340px; margin: 39px auto 0; padding-top: 28px; border-top: 1px solid var(--line); position: relative; }
 .course-nav-arrows { display: grid; grid-template-columns: 1fr auto 1fr; align-items: stretch; gap: 14px; }
@@ -334,7 +331,6 @@ button:focus-visible { outline: 3px solid rgba(232,123,75,.42); outline-offset: 
 .completed-stat strong { font-size: 20px; line-height: 1; letter-spacing: -.045em; }
 .completed-stat div span { font-size: 9px; color: #71807a; }
 .completed-stat small { display: block; margin-top: 5px; color: #8b9691; font-size: 8px; line-height: 1.35; white-space: nowrap; }
-.completed-summary-note { margin: 10px 0 0; color: #8b9691; font-size: 9px; line-height: 1.5; }
 @media (max-width: 620px) { .completed-summary { margin-top: 15px; padding: 13px 12px 11px; } .completed-summary-heading { align-items: flex-start; flex-direction: column; gap: 3px; } .completed-stat-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 6px; } .completed-stat { padding: 9px 8px 7px; } .completed-stat strong { font-size: 18px; } }
 
 /* Shared page navigation for course and lecturer views. */
