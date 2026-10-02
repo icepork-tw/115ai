@@ -351,7 +351,8 @@ button:focus-visible { outline: 3px solid rgba(232,123,75,.42); outline-offset: 
 /* Fine mobile layout pass: prioritize tap targets, readable wrapping, and narrow 320px screens. */
 @media (max-width: 620px) {
   .site-shell { padding-left: 12px; padding-right: 12px; }
-  .home-shell .workspace { display: flex; flex-direction: column; }
+  .home-shell .workspace { display: flex; flex-direction: column; align-items: stretch; }
+  .home-shell .day-panel, .home-shell .calendar-panel { width: 100%; min-width: 0; }
   .home-shell .day-panel { order: -1; }
   .home-shell .calendar-panel { order: 1; }
   .detail-shell .brand-lockup, .directory-shell .brand-lockup { gap: 9px; min-width: 0; }
