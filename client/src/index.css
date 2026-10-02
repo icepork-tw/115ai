@@ -351,6 +351,17 @@ button:focus-visible { outline: 3px solid rgba(232,123,75,.42); outline-offset: 
 /* Fine mobile layout pass: prioritize tap targets, readable wrapping, and narrow 320px screens. */
 @media (max-width: 620px) {
   .site-shell { padding-left: 12px; padding-right: 12px; }
+  .detail-shell .topbar, .directory-shell .topbar,
+  .detail-shell .detail-hero, .detail-shell .detail-stats, .detail-shell .detail-layout,
+  .detail-shell .course-navigation, .directory-shell .directory-hero, .directory-shell .directory-grid {
+    width: 100%;
+    min-width: 0;
+  }
+  .detail-shell .brand-lockup > div:last-child, .directory-shell .brand-lockup > div:last-child { min-width: 0; }
+  .detail-shell .brand-name, .directory-shell .brand-name { overflow: hidden; text-overflow: ellipsis; }
+  .detail-shell .detail-stats, .detail-shell .detail-layout, .directory-shell .directory-grid { min-width: 0; }
+  .detail-shell .stat-card, .detail-shell .course-list, .detail-shell .people-card, .directory-shell .directory-card { min-width: 0; }
+  .detail-shell .course-row, .detail-shell .row-date, .detail-shell .row-time, .detail-shell .row-staff { min-width: 0; }
   .home-shell .topbar { width: 100%; min-width: 0; }
   .home-shell .brand-lockup { flex: 1 1 auto; min-width: 0; }
   .home-shell .brand-lockup > div:last-child { min-width: 0; }
