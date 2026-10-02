@@ -131,7 +131,7 @@ function DaySchedule({ day, isPast }: { day: ScheduleDay; isPast: boolean }) {
                   <div className="session-teacher"><UserRound size={14} /> {session.teacher || "未標示講師"}</div>
                 </div>
                 <div className="session-status">
-                  {isPast && <span className="completed-badge">已完成</span>}
+                  {isPast && <span className="completed-badge" aria-label="課程狀態：已完成">已完成</span>}
                   <span className="hours-pill">{session.hours} 節</span>
                 </div>
               </div>
@@ -229,7 +229,7 @@ export default function Home() {
                   <button key={cell.key} title={holiday} className={`calendar-day ${!cell.inMonth ? "muted" : ""} ${day ? "has-class highlighted" : ""} ${day && cell.key < todayKey ? "past" : ""} ${holiday ? "holiday" : ""} ${isToday ? "today" : ""} ${selected ? "selected" : ""}`} disabled={!day} onClick={() => day && chooseDate(cell.key)}>
                   <span className="day-number">{cell.date.getDate()}</span>
                   {day && <span className="day-dots"><i /><i /></span>}
-                  {day && <span className="day-caption">課</span>}
+                  {day && <span className={`day-caption ${cell.key < todayKey ? "completed-day-label" : ""}`}>{cell.key < todayKey ? "已上" : "課"}</span>}
                   {holiday && <span className="holiday-label">{holiday}</span>}
                   {isToday && <span className="today-label">今天</span>}
                 </button>
