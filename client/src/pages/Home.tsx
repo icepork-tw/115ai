@@ -218,7 +218,7 @@ export default function Home() {
               <button className="today-button" onClick={chooseToday}>回到今天</button>
             </div>
           </div>
-          <div className="calendar-weekdays">{WEEKDAYS.map((day) => <span key={day}>{day}</span>)}</div>
+          <div className="calendar-weekdays">{WEEKDAYS.map((day, index) => <span className={index === 0 || index === 6 ? "weekend" : ""} key={day}>{day}</span>)}</div>
           <div className="calendar-grid">
             {calendar.map((cell) => {
               const day = byDate.get(cell.key);
@@ -226,7 +226,7 @@ export default function Home() {
               const isToday = todayKey === cell.key;
               const holiday = HOLIDAYS[cell.key];
               return (
-                  <button key={cell.key} title={holiday} className={`calendar-day ${!cell.inMonth ? "muted" : ""} ${day ? "has-class highlighted" : ""} ${day && cell.key < todayKey ? "past" : ""} ${holiday ? "holiday" : ""} ${isToday ? "today" : ""} ${selected ? "selected" : ""}`} disabled={!day} onClick={() => day && chooseDate(cell.key)}>
+                  <button key={cell.key} title={holiday} className={`calendar-day ${!cell.inMonth ? "muted" : ""} ${cell.date.getDay() === 0 || cell.date.getDay() === 6 ? "weekend" : ""} ${day ? "has-class highlighted" : ""} ${day && cell.key < todayKey ? "past" : ""} ${holiday ? "holiday" : ""} ${isToday ? "today" : ""} ${selected ? "selected" : ""}`} disabled={!day} onClick={() => day && chooseDate(cell.key)}>
                   <span className="day-number">{cell.date.getDate()}</span>
                   {day && <span className="day-dots"><i /><i /></span>}
                   {day && <span className={`day-caption ${cell.key < todayKey ? "completed-day-label" : ""}`}>{cell.key < todayKey ? "已上" : "課"}</span>}

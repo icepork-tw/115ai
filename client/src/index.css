@@ -497,3 +497,8 @@ button:focus-visible { outline: 3px solid rgba(232,123,75,.42); outline-offset: 
   .not-found-card p:not(.eyebrow) { margin-bottom: 20px; }
   .not-found-home { width: 100%; justify-content: center; }
 }
+
+/* Quietly distinguish ordinary weekends without competing with classes or holidays. */
+.calendar-weekdays span.weekend { color: #7f8d87; }
+.calendar-day.weekend:not(.has-class):not(.holiday):not(.selected) { background: rgba(78,101,96,.055); color: #71807a; }
+.calendar-day.weekend:not(.has-class):not(.holiday):not(.selected).muted { background: rgba(78,101,96,.025); color: rgba(78,101,96,.25); }
