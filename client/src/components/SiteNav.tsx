@@ -1,7 +1,7 @@
 import { BookOpen, House, UserRound } from "lucide-react";
 import { Link } from "wouter";
 
-type NavArea = "courses" | "lecturers" | "course-detail" | "lecturer-detail";
+type NavArea = "courses" | "lecturers" | "course-detail" | "lecturer-detail" | "not-found";
 
 export default function SiteNav({ current }: { current: NavArea }) {
   const links = [
