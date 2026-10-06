@@ -230,6 +230,7 @@ export default function Home() {
                   <span className="day-number">{cell.date.getDate()}</span>
                   {day && <span className="day-dots"><i /><i /></span>}
                   {day && <span className={`day-caption ${cell.key < todayKey ? "completed-day-label" : ""}`}>{cell.key < todayKey ? "已上" : "課"}</span>}
+                  {cell.inMonth && !day && !holiday && (cell.date.getDay() === 0 || cell.date.getDay() === 6) && <span className="weekend-label">週末休息</span>}
                   {holiday && <span className="holiday-label">{holiday}</span>}
                   {isToday && <span className="today-label">今天</span>}
                 </button>
